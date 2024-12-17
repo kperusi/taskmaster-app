@@ -1,0 +1,167 @@
+.single-task-x {
+  flex-direction: column;
+  /* position: absolute; */
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  /* border: solid 1px blueviolet; */
+  border-radius: 10px;
+  padding: 20px;
+  /* height: 100vh; */
+  gap: 20px;
+  text-align: center;
+  align-items: center;
+}
+.single-task {
+  display: none;
+  background-color: white;
+  margin-top: 20px;
+}
+.single-task-close-btn {
+  position: absolute;
+  background-color: blueviolet;
+  border: 1px solid white;
+  padding: 13px;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  right: 10px;
+  /* margin-left: 0px; */
+  /* margin-right: 0px; */
+}
+.single-task-title-x {
+  padding: 20px;
+  background-color: rgb(243, 242, 242);
+  width: 100%;
+  gap: 10px;
+}
+.single-task-title-x h1,
+.edit-input-title {
+  font-size: 1.2em;
+  text-align: left;
+  padding: 10px;
+}
+.edit-form {
+  width: 100%;
+}
+.edit-input-title {
+  width: 100%;
+  border: solid 2px rgb(179, 178, 178);
+  border-radius: 8px;
+}
+.desc-input {
+  margin-top: 5px;
+  width: 100%;
+  font-size: 1.2em;
+  padding: 10px;
+}
+
+label {
+  width: 100%;
+  text-align: left;
+}
+
+.single-task-title-x p {
+  padding: 0 0px;
+  text-align: left;
+  background-color: rgb(243, 242, 242);
+}
+
+.col-1 {
+  display: flex;
+  flex-direction: column;
+}
+.row-1 {
+  padding: 20px;
+}
+.due-date-x {
+  display: flex;
+  gap: 5px;
+}
+
+.subtasks-x {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(238, 237, 237);
+  padding: 5px 20px;
+  gap: 2px;
+}
+.subtask {
+display: flex;
+flex-direction: row;
+/* gap: 2px!important; */
+/* border: solid 2px grey; */
+border-radius: 5px;
+padding: 5px;
+}
+
+.createdBy-x {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: blueviolet;
+  color: white;
+}
+.single-task-btn-x {
+  display: flex;
+  background-color: #ffffff;
+  align-items: center;
+  padding: 10px;
+}
+.edit-del-x {
+  display: flex;
+  gap: 10px;
+  padding: 0 20px;
+ 
+}
+.edit-del-x span {
+  display: flex;
+  align-items: center;
+  background-color: blueviolet;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+.edit-del-x span:hover svg {
+  cursor: pointer;
+  width: 40px;
+}
+.visible {
+  display: block;
+}
+.due-date-input {
+  width: 90%;
+  padding: 10px;
+}
+.form-row-1 {
+  width: 100%;
+}
+.edit-add-subtask {
+  background-color: rgb(188, 175, 199);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  color: white;
+}
+.edit-subtask-title{
+  height: 50px;
+  width: 100%;
+  font-size: 1.2em;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.edit-subtask{
+  padding: 0 10px!important;
+border-radius: 5px;
+background-color: white; 
+display: flex;
+gap: 10px;
+/* padding: 10px; */
+border: solid grey 2px;
+align-items: center;
+}
+.true{
+  text-decoration: line-through;
+  color: rgb(252, 98, 98);
+}
