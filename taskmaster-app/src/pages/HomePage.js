@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/styles.css";
+// import '../styles/homepagestyle.css'
 import img1 from "../styles/images/TaskMaster.png";
 import { NavLink, useNavigate } from "react-router";
 export default function HomePage() {

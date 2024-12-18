@@ -118,7 +118,7 @@ router.post("/login", async (req, res) => {
     const isMatch = await user.comparePassword(password);
 
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid your Email or Password." });
+      return res.status(400).json({ message: "Invalid Email or Password." });
     }
 
     // Generate JWT token

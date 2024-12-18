@@ -423,8 +423,7 @@ form button {
   display: block;
 }
 
-.taskmaster-main{
-
+.taskmaster-main {
   display: flex;
   flex-direction: column;
   background-color: rgb(231, 231, 231);
@@ -580,7 +579,7 @@ ul {
   padding: 10px;
   font-size: 17px;
 }
-.user-page-x{
+.user-page-x {
   display: flex;
   flex-direction: column;
 }
@@ -593,8 +592,6 @@ ul {
 .side-bar svg {
   height: 19px;
 }
-
-
 
 .taskmaster-form-x {
   display: none;
@@ -631,18 +628,7 @@ ul {
 .task-input-status-x {
   width: 100%;
 }
-/* form div {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-} */
-/* form input[type="text"] {
-  height: 40px;
-  border-radius: 5px;
-  outline: none;
-  border: solid 1.8px gray;
-  padding: 5px;
-} */
+
 textarea {
   height: 70px;
   border-radius: 5px;
@@ -669,9 +655,7 @@ textarea {
   width: 100%;
   /* border: solid; */
 }
-svg {
-  /* border: solid; */
-}
+
 .subtask2-x {
   margin-top: 5px;
 }
@@ -719,12 +703,9 @@ form select {
   border-radius: 10px;
 }
 
-
 .show {
   display: flex;
 }
-
-
 
 .single-recent-task-x {
   display: flex;
@@ -740,17 +721,4 @@ form select {
   display: flex;
   justify-content: space-between;
 }
-
-.single-container{
-  /* font-style: normal;
-  font-weight: 100; */
-}
-
-
-/* form input,
-textarea {
-  border: none;
-  outline: none;
-} */
-
 
