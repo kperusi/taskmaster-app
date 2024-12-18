@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import "../styles/styles.css";
-import { useDispatch } from "react-redux";
-import { setStoreTasks } from "../store/taskSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowSelection, setStoreTasks } from "../store/taskSlice";
 
 export default function UserPage() {
   const navigate = useNavigate();
@@ -16,10 +16,13 @@ export default function UserPage() {
   const [status, setStatus] = useState("to-do");
   const [priority, setPriority] = useState("medium");
   const [dueDate, setDueDate] = useState("");
+  const [showSetting, setShowSettig]=useState("");
   const { params } = useParams();
   const location = useLocation();
-
+  const [selectedItem ,setSelectedItem]=useState({dashboard:'',task:'',calender:''})
+const [svgColor,setSvgColor] = useState('grey')
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("userData")));
@@ -31,7 +34,7 @@ export default function UserPage() {
     } else setLetter(user.firstname?.toUpperCase()[0]);
   }, [user]);
 
-  console.log(user._id);
+  // console.log(user._id);
   const showAddTaskFormHandler = (e) => {
     e.preventDefault();
     if (showAddTask === "show") {
@@ -44,18 +47,21 @@ export default function UserPage() {
       const token = localStorage.getItem("token"); // Get stored token
       console.log(token);
 
-      const response = await fetch("https://taskmaster-apps.onrender.com/tasks", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://taskmaster-apps.onrender.com/tasks",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const data = await response.json();
 
       if (!response.ok) {
-        dispatch(setStoreTasks(JSON.parse(localStorage.getItem('tasks'))));
+        dispatch(setStoreTasks(JSON.parse(localStorage.getItem("tasks"))));
         throw new Error(data.message || "Failed to fetch tasks");
       }
 
@@ -71,7 +77,7 @@ export default function UserPage() {
       }
     } catch (error) {
       console.error("Error fetching tasks:", error);
-      dispatch(setStoreTasks(JSON.parse(localStorage.getItem('tasks'))));
+      dispatch(setStoreTasks(JSON.parse(localStorage.getItem("tasks"))));
       // Handle error (show error message to user)
     }
   }
@@ -80,7 +86,7 @@ export default function UserPage() {
     fetchUserTasks();
   }, []);
 
-  console.log(tasks);
+  // console.log(tasks);
 
   const createNewSubtask = function (e) {
     e.preventDefault();
@@ -125,14 +131,17 @@ export default function UserPage() {
     try {
       const token = localStorage.getItem("token"); // or however you store your token
 
-      const response = await fetch("https://taskmaster-apps.onrender.com/addTask", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(newTask),
-      });
+      const response = await fetch(
+        "https://taskmaster-apps.onrender.com/addTask",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(newTask),
+        }
+      );
 
       // Log the full error response
       const data = await response.json();
@@ -155,9 +164,63 @@ export default function UserPage() {
   }
 
   const handleNavigate = (route) => {
-    console.log(route);
     navigate(route);
   };
+  const handleClick = (item,e) => {
+    dispatch(setShowSelection(item));
+handleNavigate(item);
+
+console.log(item)
+    if(item==='dashboard'){
+      setSelectedItem({dashboard:'dashboard-selected',task:'',calender:''});
+    setSvgColor('white')
+    }
+    if(item==='tasks'){
+      setSelectedItem({dashboard:'',task:'task-selected',calender:''});
+      setSvgColor('white')
+    }
+    if(item==='calender'){
+      setSelectedItem({dashboard:'',task:'',calender:'calender-selected'});
+      setSvgColor('white')
+    }
+  };
+  const handleShowSetting=()=>{
+    setShowSettig('show')
+  }
+
+  async function logout() {
+    try {
+      const token = localStorage.getItem("token");
+  
+      const response = await fetch("https://taskmaster-apps.onrender.com/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        // Clear all auth-related data from localStorage
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("user");
+        // Redirect to login page
+        // window.location.href = "./home.html";
+        navigate('/');
+      } else {
+        throw new Error(data.message || "Logout failed");
+      }
+    } catch (error) {
+      console.error("Logout error:", error);
+      // Handle error (show error message to user)
+    }
+  }
+  
+
+
   return (
     <main className="user-page-x">
       <section className="tool-bar">
@@ -168,7 +231,7 @@ export default function UserPage() {
             {user?.firstname} {user?.lastname}
           </h2>
 
-          <button class="open-setting-btn" id="open-setting-btn">
+          <button className="open-setting-btn" onClick={handleShowSetting}>
             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="7">
               <path
                 fill="none"
@@ -180,8 +243,8 @@ export default function UserPage() {
           </button>
         </div>
 
-        <div class="setting" id="setting">
-          <h2>Settings</h2>
+        <div class={`setting ${showSetting}`}>
+          <h4>Settings</h4>
           <ul>
             <li>
               <button>Profile</button>
@@ -190,9 +253,10 @@ export default function UserPage() {
               <button>Account</button>
             </li>
             <li>
-              <button id="logout">Logout</button>
+              <button className="logout" onClick={logout}>Logout</button>
             </li>
           </ul>
+          <p>{user.email}</p>
         </div>
         <div class="search-add-btn-x">
           <div class="search-x">
@@ -210,8 +274,6 @@ export default function UserPage() {
               className="search-input"
               placeholder="Search"
             />
-            {/* <!-- <button class="search-btn">
-                       </button> --> */}
           </div>
           <button class="add-task-btn" onClick={showAddTaskFormHandler}>
             + Add New task
@@ -336,13 +398,18 @@ export default function UserPage() {
       <section className="side-bar-content-x">
         <aside className="side-bar">
           <div className="side-bar-btn-x">
-            <button class="side-bar-home-btn" onClick={()=>{navigate('/')}}>
+            <button
+              className="side-bar-home-btn"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"
                 viewBox="0 -960 960 960"
                 width="24px"
-                fill="#5f6368"
+                fill={`${svgColor}`}
               >
                 <path d="M480-512ZM160-160v-391.67l-80 61-39.67-53 439.67-337L920-544l-40 53.33-400-306-253.33 194v376h168V-160H160Zm446.33 80L446.67-240l46.66-47.67 113 113.67 227-226L880-353 606.33-80Z" />
               </svg>
@@ -350,43 +417,46 @@ export default function UserPage() {
             </button>
 
             <button
-              className="side-bar-dashboard-btn"
-              onClick={() => handleNavigate("dashboard")}
+              className={`side-bar-dashboard-btn ${selectedItem.dashboard}`}
+              onClick={() => handleClick("dashboard")}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"
                 viewBox="0 -960 960 960"
                 width="24px"
-                fill="#5f6368"
+                fill={`${svgColor}`}
               >
                 <path d="M120-840h320v320H120v-320Zm80 80v160-160Zm320-80h320v320H520v-320Zm80 80v160-160ZM120-440h320v320H120v-320Zm80 80v160-160Zm440-80h80v120h120v80H720v120h-80v-120H520v-80h120v-120Zm-40-320v160h160v-160H600Zm-400 0v160h160v-160H200Zm0 400v160h160v-160H200Z" />
               </svg>
               Dashboard
             </button>
             <button
-              className="side-bar-task-btn"
+              className={`side-bar-task-btn ${selectedItem.task}`}
               id="task-btn"
-              onClick={() => handleNavigate("tasks")}
+              onClick={() => handleClick("tasks")}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"
                 viewBox="0 -960 960 960"
                 width="24px"
-                fill="#5f6368"
+                fill={`${svgColor}`}
               >
                 <path d="m438-240 226-226-58-58-169 169-84-84-57 57 142 142ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" />
               </svg>
               Tasks
             </button>
-            <button className="side-bar-calender-btn">
+            <button
+              className="side-bar-calender-btn"
+              onClick={() => handleClick("calender")}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"
                 viewBox="0 -960 960 960"
                 width="24px"
-                fill="#5f6368"
+                fill={`${svgColor}`}
               >
                 <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm80 240v-80h400v80H280Zm0 160v-80h280v80H280Z" />
               </svg>

@@ -1,106 +1,101 @@
-.task-main-container{
-    display: flex;
-gap: 10px;
-width: 100%;
+.task-main-container {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  font-size: 0.85em !important;
 }
-.task-main-container section{
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(240, 240, 240);
-    /* border: solid; */
-    padding: 10px 20px;
-    gap: 20px;
-    width: 50%;
-
-} 
-.todo-container{
-    display: flex;
-    flex-direction: column;
-    padding: 13px;
-    background-color: white;
-    border-radius: 5px;
-
+.task-main-container section {
+  display: flex;
+  flex-direction: column;
+  /* background-color: rgb(240, 240, 240); */
+  padding: 10px 5px;
+  gap: 20px;
+  width: 50%;
+  border: solid 2px rgb(230, 212, 248);
+  border-radius: 5px;
 }
-.row-1{
-    margin-top: 25px;
-    display: flex;
-    justify-content: space-around;
-    /* border: solid; */
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  padding: 13px;
+  background-color: white;
+  border-radius: 5px;
+}
+.row-1 {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  /* border: solid; */
 }
 .high {
-    background-color: rgb(243, 163, 163);
-    color: rgb(243, 5, 5);
-    padding: 3px 10px;
-    border-radius: 3px;
-    width: fit-content;
-    text-align: center;
-  }
-  .medium {
-    background-color: rgb(190, 157, 243);
-    color: rgb(71, 12, 167);
-    padding: 3px;
-    border-radius: 3px;
-    width: fit-content;
-    text-align: center;
-  }
-  .low {
-    background-color: rgb(160, 95, 140);
-    color: white;
-    padding: 3px 10px;
-    border-radius: 3px;
-    width: fit-content;
-    text-align: center;
-  }
-  .tasks-content {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    font-size: 17px;
-  }
-  
-  .todo-x,
-  .inprogress-x,
-  .completed-x {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(238, 238, 238);
-    padding: 10px;
-    border-radius: 5px;
-    gap: 10px;
-    /* justify-content: space-between; */
-    border: 1px solid rgb(228, 223, 223);
-    margin-bottom: 10px;
-    width: 40%;
-  }
-  
-  .done, .circle {
-    /* background-color: red; */
-    display: block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-  }
-  .title-x {
-    display: flex;
-    gap: 10px;
-  }
-  .circle-title-x{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .in-progress-circle{
-    background-color: rgb(17, 130, 182);
-    /* display: block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%; */
-  }
-  .todo-circle {
-    background-color: rgb(40, 145, 14);
+  background-color: rgb(243, 163, 163);
+  color: rgb(243, 5, 5);
+  padding: 3px 10px;
+  border-radius: 3px;
+  width: fit-content;
+  text-align: center;
+}
+.medium {
+  background-color: rgb(190, 157, 243);
+  color: rgb(71, 12, 167);
+  padding: 3px;
+  border-radius: 3px;
+  width: fit-content;
+  text-align: center;
+}
+.low {
+  background-color: rgb(160, 95, 140);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 3px;
+  width: fit-content;
+  text-align: center;
+}
+.tasks-content {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 17px;
+}
 
-  }
-  .completed-circle {
-    background-color: rgb(243, 25, 152);
-  }
-  
+.todo-x,
+.inprogress-x,
+.completed-x {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(238, 238, 238);
+  padding: 10px;
+  border-radius: 5px;
+  gap: 10px;
+  /* justify-content: space-between; */
+  border: 1px solid rgb(228, 223, 223);
+  margin-bottom: 10px;
+  width: 40%;
+}
+
+.done,
+.circle {
+  /* background-color: red; */
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+.title-x {
+  display: flex;
+  gap: 10px;
+}
+.circle-title-x {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.in-progress-circle {
+  background-color: rgb(17, 130, 182);
+}
+.todo-circle {
+  background-color: rgb(40, 145, 14);
+}
+.completed-circle {
+  background-color: rgb(243, 25, 152);
+}

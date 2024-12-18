@@ -5,6 +5,7 @@ export const taskSlice = createSlice({
     tasks: [],
     singleTask:[],
     isLoading: false,
+    showSelection:'',
     error: null,
   },
   reducers: {
@@ -35,8 +36,11 @@ export const taskSlice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
+    setShowSelection: (state, action) =>{
+      state.showSelection = action.payload;
+    }
   },
 });
 
-export const { setStoreTasks, setLoading, setError } = taskSlice.actions;
+export const { setStoreTasks, setLoading, setError,setShowSelection } = taskSlice.actions;
 export default taskSlice.reducer;

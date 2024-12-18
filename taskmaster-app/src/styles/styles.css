@@ -344,7 +344,13 @@ a:hover {
 }
 .password,
 .email,
-.confirm-password {
+.confirm-password, .first-name,.last-name {
+  height: 60px !important;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+  border: solid 1px blueviolet !important;
+  font-size: 17px;
   border: solid 1px blueviolet;
 }
 .password-x {
@@ -448,11 +454,32 @@ form button {
   top: 100px;
   left: 30px;
   background-color: white;
-  width: 300px;
-  padding: 10px 40px;
+  width: 230px;
+  /* padding:0px 15px; */
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   display: none;
+  flex-direction: column;
+  /* justify-items: center; */
+}
+.setting button{
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  text-align: left;
+}
+.setting p{
+  font-size: 0.8em;
+}
+.setting h4{
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 5px;
+  background-color: rgb(218, 188, 247);
+}
+.setting p{
+  padding: 5px;
 }
 a {
   text-decoration: none;
@@ -463,9 +490,13 @@ a {
   list-style-type: none;
   padding: 10px;
   gap: 10px;
+  
 }
-ul {
+.setting button:hover{
   cursor: pointer;
+  background-color: blueviolet;
+  width: 100%;
+  color: white;
 }
 .search-add-btn-x {
   background-color: white;
@@ -516,7 +547,7 @@ ul {
   margin-top: 10px;
   gap: 15px;
   width: 100%;
-  background-color: rgb(196, 196, 196);
+  background-color: rgb(238, 237, 237);
   padding: 10px;
 }
 .side-bar {
@@ -548,11 +579,13 @@ ul {
 .user-page-x {
   display: flex;
   flex-direction: column;
+
 }
+
 .side-bar button:hover {
   background-color: blueviolet;
   cursor: pointer;
-  border-bottom-right-radius: 20px;
+  /* border-bottom-right-radius: 20px; */
   color: white;
 }
 .side-bar svg {
@@ -683,4 +716,11 @@ form button {
   display: flex;
   justify-content: space-between;
 }
-
+.dashboard-selected{
+  background-color: blueviolet !important;
+  color: white !important;;
+}
+.task-selected{
+  background-color: blueviolet !important;
+  color: white !important;;
+}

@@ -8,6 +8,7 @@ import UserPage from './UserPage'
 import SingleTask from './SingleTask'
 import Registration from './Registration'
 import Login from './Login'
+import Calender from './Calender'
 
 export default function Router() {
   return (
@@ -21,6 +22,7 @@ export default function Router() {
       <Route path='dashboard' element={<DashboardPage/>}/>
       <Route path='tasks' element= {<Task/>}/>
       <Route path='/user/tasks/:id' element={<SingleTask/>}/>
+      <Route path='/user/calender' element={<Calender/>}/>
     </Route>
     <Route path='/user/tasks/:id' element={<SingleTask/>}/>
     <Route path='*' element= {<ErrorPage/>}/>
