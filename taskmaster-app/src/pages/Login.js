@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from "react-router";
 
 export default function Login() {
   const [showLogin, setShowLogin] = useState();
-  const [showRegister, setShowRegister] = useState();
+  const [msg, setMsg] = useState();
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -36,6 +36,7 @@ export default function Login() {
       localStorage.setItem("userData", JSON.stringify(data.user));
 
       if (!response.ok) {
+        setMsg(data.error)
         throw new Error(data.message || "Login failed");
       }
 
@@ -45,12 +46,14 @@ export default function Login() {
 
       // this.showMessage(this.loginSuccess, 'Login successful! Redirecting...');
       console.log("login successful! Redirecting...");
+      setMsg('Login successful!');
       setTimeout(() => {
         navigate("/user");
       }, 2500);
     } catch (error) {
       // this.showMessage(this.loginError, error.message);
       console.log(error.message);
+      setMsg(error.message);
     }
   }
 
@@ -103,6 +106,10 @@ export default function Login() {
                   id="loginPassword"
                   onChange={(e) => setPassword(e.target.value)}
                 />
+              </div>
+
+              <div className="error-x">
+                <p className="error">{msg}</p>
               </div>
 
               <button
