@@ -74,7 +74,7 @@ width: 100%;
   }
   
   .done, .circle {
-    background-color: red;
+    /* background-color: red; */
     display: block;
     width: 15px;
     height: 15px;
@@ -87,19 +87,20 @@ width: 100%;
   .circle-title-x{
     display: flex;
     align-items: center;
+    gap: 10px;
   }
-  .inprogress-cirlce {
+  .in-progress-circle{
     background-color: rgb(17, 130, 182);
-    display: block;
+    /* display: block;
     width: 15px;
     height: 15px;
-    border-radius: 50%;
+    border-radius: 50%; */
   }
-  .todo-cirlce {
+  .todo-circle {
     background-color: rgb(40, 145, 14);
-    display: block;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
+
+  }
+  .completed-circle {
+    background-color: rgb(243, 25, 152);
   }
   

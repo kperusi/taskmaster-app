@@ -181,7 +181,7 @@ export default function Task() {
       </section>
       <section className="completed-container">
         <div className="circle-title-x">
-          <span className="todo-circle circle"></span>
+          <span className="completed-circle circle"></span>
           <h1>{`DONE (${completedTasks.length})`}</h1>
         </div>
         {completedTasks.map((task) => (
