@@ -22,8 +22,7 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  /* line-height: 1.6; */
-  /* background-color: #f4f4f4; */
+ 
   font-family: "NunitoSans-Regular";
   font-size: 17px;
 }
@@ -31,8 +30,7 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  /* gap: 20px; */
-  /* height: 100vh; */
+
 }
 
 .page {
@@ -58,7 +56,6 @@ body {
   background-position-y: center;
   background-position-x: -500px;
   border-bottom-left-radius: 50px;
-  /* display: none; */
 }
 .tool-bar-x {
   display: flex;
@@ -77,7 +74,6 @@ body {
   gap: 10px;
 }
 .login-btn {
-  /* height: 40px; */
   background-color: blueviolet;
   border: none;
   border-radius: 20px;
@@ -94,24 +90,17 @@ body {
   color: white !important;
 }
 .sign-up-btn {
-  /* height: 40px; */
   background-color: white;
   border: 1px solid white;
   border-top-left-radius: 17px;
   border-bottom-right-radius: 17px;
   padding: 13px 10px;
   color: blueviolet;
-  /* width: 100px; */
   text-align: center;
   font-size: 17px;
 }
 
-.sign-up-hero-x p {
-  /* font-family: 'PlaywriteHRLijeva-VariableFont_wght'; */
-}
-.sign-up-hero-x h1 {
-  /* border: solid; */
-}
+
 .hero-x {
   display: flex;
   flex-direction: column;
@@ -129,12 +118,10 @@ body {
 .hero3 {
   text-align: center;
   color: rgb(202, 202, 202);
-  /* font-family: 'PlaywriteHRLijeva-VariableFont_wght'; */
 }
 .hero-x button {
   margin-top: 40px;
-  /* background-color: white; */
-  /* color: blueviolet; */
+ 
 }
 .hero-btn-x {
   display: flex;
@@ -147,23 +134,18 @@ body {
   width: 100%;
   border-radius: 20px;
   margin-bottom: -20px;
-  /* padding: 40px; */
 }
 .home-section-two div {
   width: 80%;
   align-self: center;
   justify-self: center;
-  /* margin-top: 90px; */
-
-  /* border: solid; */
+ 
 }
 .home-section-two {
   padding-top: 20px;
-  /* margin-top: 20px; */
   width: 95%;
   height: fit-content;
   background-color: rgb(238, 206, 248);
-  /* border-bottom-right-radius: 20px; */
   border-radius: 10px;
   justify-self: center;
   align-self: center;
@@ -176,7 +158,6 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* border: solid; */
   background-color: rgb(237, 237, 240);
   background-image: url("./images/bg-pattern-circles.svg"), url("./images/bg-pattern-circlesbluevoilet2.svg");
   background-repeat: no-repeat, no-repeat;
@@ -207,14 +188,11 @@ body {
   width: 35%;
   align-items: center;
   height: 250px;
-  /* border-right: solid 1px; */
-  /* border-bottom: solid 1px; */
   border-radius: 20px;
   padding: 30px;
 }
 .feature-card svg {
   margin-bottom: 30px;
-  /* height: 10px; */
 }
 .color1 {
   background-color: rgb(255, 192, 203, 0.8);
@@ -268,9 +246,6 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  /* align-content: space-between; */
-  /* border: solid; */
 }
 .footer-content-x ul {
   display: flex;
@@ -280,7 +255,6 @@ footer {
   padding-right: 30px;
 }
 .footer-content-x li {
-  /* list-style: none; */
   list-style-type: none;
 }
 .link {
@@ -297,13 +271,10 @@ footer {
 .sign-up,
 .login {
   display: flex;
-  /* position: absolute; */
   top: 0px;
   width: 100%;
   background-color: rgb(73, 71, 71, 0.4);
-  /* border: solid; */
   justify-content: center;
-  /* height: 100vh; */
   padding: 10px 0px;
 }
 
@@ -341,6 +312,9 @@ a:hover {
   padding: 10px;
   gap: 10px;
 }
+.taskmaster-form-x {
+  z-index: 1000;
+}
 .sign-up-form,
 .login-form {
   display: flex;
@@ -357,7 +331,7 @@ a:hover {
   display: flex;
   flex-direction: column;
 }
-.add-task-form input {
+.task-title {
   height: 60px !important;
   border-radius: 5px;
   outline: none;
@@ -398,7 +372,6 @@ form button {
 .google-btn {
   display: flex;
   height: 70px;
-  /* background-color:rgb(207, 205, 209); */
 
   border: 1px solid blueviolet;
   border-radius: 10px;
@@ -416,9 +389,7 @@ form button {
   display: none;
 }
 
-.page2 {
-  /* display: none; */
-}
+
 .active {
   display: block;
 }
@@ -439,18 +410,15 @@ form button {
   align-items: center;
   border: solid 2px rgb(238, 237, 237);
   border-radius: 50%;
-  /* text-align: center; */
   width: 3vw;
   height: 3vw;
   justify-content: center;
   font-size: 1em;
   color: blueviolet;
   background-color: white;
-  /* box-shadow: 0px 1px 1px 2px rgba(23, 24, 25, 0.9); */
 }
 .user-image-x {
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   border: solid 1px rgb(211, 164, 255);
   height: 100%;
@@ -536,7 +504,6 @@ ul {
   height: 40px;
   border: none;
   outline: none;
-  /* border: solid; */
 }
 .search-btn {
   height: 100%;
@@ -546,7 +513,6 @@ ul {
 .side-bar-content-x {
   display: flex;
   flex-direction: row;
-  /* height: 90vh; */
   margin-top: 10px;
   gap: 15px;
   width: 100%;
@@ -595,7 +561,6 @@ ul {
 
 .taskmaster-form-x {
   display: none;
-  /* border: solid ; */
   width: 40%;
   position: absolute;
   right: 40px;
@@ -621,82 +586,79 @@ ul {
 
 .status-priority-x {
   display: flex;
-  flex-direction: row;
+  flex-direction: row !important;
   width: 100%;
   margin-top: 10px;
+  gap: 5px;
+  
 }
 .task-input-status-x {
-  width: 100%;
+  width: 50%;
+
 }
 
 textarea {
   height: 70px;
   border-radius: 5px;
   outline: none;
-  border: solid 1.8px gray !important;
+  border: 1px solid blueviolet;
   padding: 5px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2em;
 }
-.subtask {
+.subtask-render-x{
+  border: 1px solid blueviolet;
+  border-radius: 5px;
+}
+.add-task-subtask {
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
+  gap: 5px;
 }
-.subtask1-x,
-.subtask2-x {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  justify-content: space-between;
-  gap: 9px;
-}
-.subtask1-x input,
-.subtask2-x input {
-  width: 100%;
-  /* border: solid; */
+.add-subtask-title-input{
+  height: 60px !important;
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+  border: none;
+  font-size: 17px;
 }
 
-.subtask2-x {
-  margin-top: 5px;
-}
 .task-duedate {
-  height: 40px;
-  padding: 20px;
+  padding: 0 5px !important;
   border-radius: 5px;
   outline: none;
   border: 1px solid rgb(179, 179, 179);
+  width: 30%;
 }
 form button {
   height: 48px;
   border: none;
   border-radius: 20px;
 }
-form select {
+.status-priority-x select {
   height: 40px;
   border-radius: 5px;
   padding: 5px;
+  border: 1px solid blueviolet;
+
 }
 .subtask-btn {
   background-color: rgb(180, 179, 179);
   color: white;
   margin-top: 5px;
 }
-.task-duedate {
-  width: 50%;
-}
+
 .submit-btn {
   background-color: blueviolet;
   color: white;
 }
 .dashboard-top-x {
   width: 50%;
-  /* height: 50px; */
   border-radius: 10px;
   padding: 20px;
-  /* box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px; */
 }
 .card {
-  /* box-shadow: rgba(99, 99, 99, 0.8) 0px 2px 8px 0px; */
   width: 60%;
   height: 150px;
   padding: 10px;

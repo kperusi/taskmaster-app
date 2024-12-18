@@ -251,12 +251,13 @@ export default function UserPage() {
             </div>
             <label htmlFor="subtask">Subtasks</label>
             {/* <!-- subtask input --> */}
-            <div className="subtask" id="sub-task-x">
+            <div className="add-task-subtask" id="sub-task-x">
               {subtasks?.map((subtask, i) => (
                 <div className="subtask-render-x">
                   <input
                     type="text"
                     name="task"
+                    className="add-subtask-title-input"
                     placeholder={`Subtask${i}`}
                     onChange={(e) => setSubtaskTitle(subtask, e)}
                   />
@@ -314,7 +315,7 @@ export default function UserPage() {
             </div>
 
             <input
-              type="datetime-local"
+              type="date"
               name="duedate"
               id="task-duedate"
               className="task-duedate"
