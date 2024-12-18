@@ -8,5 +8,5 @@
         "use": "@vercel/node"
       }
     ],
-    "routes": [{"src": "/(.*)","dest": "/api/auth"}]
+    "routes": [{"src": "/api/auth/(.*)","dest": "/api/auth"}]
   }
