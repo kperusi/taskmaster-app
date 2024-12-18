@@ -21,7 +21,7 @@ connectDB();
 app.use(express.json());
 app.use(express.static(staticPath));
 // Routes
-app.use('/api/auth', authRoutes);
+app.use( authRoutes);
 
 
 app.listen(PORT, () => {
