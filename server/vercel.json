@@ -1,12 +1,27 @@
-
-
 {
     "version": 2,
     "builds": [
       {
-        "src": "package.json",
+        "src": "server/index.js",
         "use": "@vercel/node"
+      },
+      {
+        "src": "taskmaster-app/package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "taskmaster/build"
+        }
       }
     ],
-    "routes": [{"src": "/api/auth/(.*)","dest": "/api/auth"}]
+    "routes": [
+      {
+        "src": "/api/auth/(.*)",
+        "dest": "/server/index.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/taskmaster-app/build/$1"
+      }
+    ]
   }
+  
