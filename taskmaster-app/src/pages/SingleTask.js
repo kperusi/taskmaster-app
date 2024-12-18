@@ -70,7 +70,7 @@ const [loading, setLoading]= useState(true)
       console.log(">>", token);
 
       const response = await fetch(
-        `http://localhost:5000/api/auth/tasks/${id}`,
+        `https://taskmaster-apps.onrender.com/tasks/${id}`,
         {
           method: "GET",
           headers: {
@@ -105,7 +105,7 @@ const [loading, setLoading]= useState(true)
       const token = localStorage.getItem("token"); // Get stored token
       console.log(token);
 
-      const response = await fetch("http://localhost:5000/api/auth/tasks", {
+      const response = await fetch("https://taskmaster-apps.onrender.com/tasks", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -181,7 +181,7 @@ console.log(subtasks)
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/auth/tasks/${singleTask._id}`,
+        `https://taskmaster-apps.onrender.com/tasks/${singleTask._id}`,
         {
           method: "PUT",
           headers: {
@@ -238,7 +238,7 @@ console.log(subtasks)
   async function handleSubtaskDelete(task, subtask) {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/auth/tasks/${task._id}/subtasks/${subtask._id}`,
+        `https://taskmaster-apps.onrender.com/tasks/${task._id}/subtasks/${subtask._id}`,
         {
           method: "DELETE",
         }
@@ -263,7 +263,7 @@ console.log(subtasks)
   async function handleSingleTaskDelete(task) {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/auth/tasks/${task._id}`,
+        `https://taskmaster-apps.onrender.com/tasks/${task._id}`,
         {
           method: "DELETE",
         }

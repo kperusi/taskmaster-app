@@ -49,7 +49,7 @@ export default function Registration() {
     try {
       const token = localStorage.getItem("token"); // or however you store your token
 
-      const response = await fetch("http://localhost:5000/api/auth/addTask", {
+      const response = await fetch("https://taskmaster-apps.onrender.com/addTask", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +87,7 @@ export default function Registration() {
     console.log(newUser);
 
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/register`, {
+      const response = await fetch(`https://taskmaster-apps.onrender.com/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

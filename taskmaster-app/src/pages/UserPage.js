@@ -44,7 +44,7 @@ export default function UserPage() {
       const token = localStorage.getItem("token"); // Get stored token
       console.log(token);
 
-      const response = await fetch("http://localhost:5000/api/auth/tasks", {
+      const response = await fetch("https://taskmaster-apps.onrender.com/tasks", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -125,7 +125,7 @@ export default function UserPage() {
     try {
       const token = localStorage.getItem("token"); // or however you store your token
 
-      const response = await fetch("http://localhost:5000/api/auth/addTask", {
+      const response = await fetch("https://taskmaster-apps.onrender.com/addTask", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
