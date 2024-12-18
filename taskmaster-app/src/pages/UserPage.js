@@ -209,6 +209,7 @@ console.log(item)
         localStorage.removeItem("user");
         // Redirect to login page
         // window.location.href = "./home.html";
+        setShowSettig('')
         navigate('/');
       } else {
         throw new Error(data.message || "Logout failed");

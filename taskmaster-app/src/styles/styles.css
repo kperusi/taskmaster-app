@@ -724,3 +724,10 @@ form button {
   background-color: blueviolet !important;
   color: white !important;;
 }
+
+.red{
+  color: red;
+}
+.green{
+  color: green;
+}

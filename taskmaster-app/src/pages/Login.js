@@ -12,6 +12,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
   const [user, setUser] = useState({});
+  const [msgColor, setMsgColor] = useState('')
 
 
 
@@ -36,6 +37,8 @@ export default function Login() {
       localStorage.setItem("userData", JSON.stringify(data.user));
 
       if (!response.ok) {
+        
+      setMsgColor('red')
         setMsg(data.error)
         throw new Error(data.message || "Login failed");
       }
@@ -46,6 +49,7 @@ export default function Login() {
 
       // this.showMessage(this.loginSuccess, 'Login successful! Redirecting...');
       console.log("login successful! Redirecting...");
+      setMsgColor('green')
       setMsg('Login successful!');
       setTimeout(() => {
         navigate("/user");
@@ -53,6 +57,7 @@ export default function Login() {
     } catch (error) {
       // this.showMessage(this.loginError, error.message);
       console.log(error.message);
+      setMsgColor('red');
       setMsg(error.message);
     }
   }
@@ -109,7 +114,7 @@ export default function Login() {
               </div>
 
               <div className="error-x">
-                <p className="error">{msg}</p>
+                <p className={`error ${msgColor}`}>{msg}</p>
               </div>
 
               <button
