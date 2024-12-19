@@ -392,6 +392,9 @@ form button {
   color: white;
   margin-top: 20px;
 }
+.form-sign-up-btn:hover{
+  cursor: pointer;
+}
 .cancel-btn {
   border: none;
   align-self: flex-end;

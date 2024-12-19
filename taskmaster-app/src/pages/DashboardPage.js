@@ -268,7 +268,7 @@ export default function DashboardPage() {
                     <YAxis />
                     <Tooltip />
                     <Bar dataKey="completed" stackId="a" fill="blueviolet" />
-                    <Bar dataKey="pending" stackId="a" fill="#FFA726" />
+              
                   </BarChart>
                 </ResponsiveContainer>
               {/* </div> */}

@@ -95,6 +95,7 @@ export default function SingleTask() {
         setTitle(data.task.title);
         setDescription(data.task.description);
         setDueDate(data.task.dueDate);
+        setPriority(data.task.priority);
         setLoading(false);
       }
     } catch (error) {
@@ -297,6 +298,8 @@ fetchUserTasks()
     }
   }
 
+  console.log(dueDate.split("T")[0])
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -457,7 +460,7 @@ fetchUserTasks()
                 className="due-date-input"
                 type="date"
                 name="due-date"
-                value={dueDate}
+                value={dueDate.split("T")[0]}
                 onChange={(e) => setDueDate(e.target.value)}
               />
             </div>
