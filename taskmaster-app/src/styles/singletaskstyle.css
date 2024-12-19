@@ -47,8 +47,9 @@
 }
 .edit-input-title {
   width: 100%;
-  border: solid 2px rgb(179, 178, 178);
+  border: solid 1px blueviolet;
   border-radius: 8px;
+  margin-bottom: 10px;
 }
 .desc-input {
   margin-top: 5px;
@@ -88,12 +89,15 @@ label {
   gap: 2px;
 }
 .subtask {
-display: flex;
-flex-direction: row;
-/* gap: 2px!important; */
-/* border: solid 2px grey; */
-border-radius: 5px;
-padding: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px !important;
+  /* border: solid 2px grey; */
+  /* border-radius: 5px; */
+  padding: 5px 20px !important;
+  padding: 5px;
+  justify-content: space-between;
+  border-bottom: 1.9px solid rgb(233, 218, 247);
 }
 
 .createdBy-x {
@@ -113,7 +117,6 @@ padding: 5px;
   display: flex;
   gap: 10px;
   padding: 0 20px;
- 
 }
 .edit-del-x span {
   display: flex;
@@ -132,6 +135,11 @@ padding: 5px;
 .due-date-input {
   width: 90%;
   padding: 10px;
+  font-size: 1em;
+  font-family: "Times New Roman", Times, serif;
+}
+.edit-select {
+  padding: 10px;
 }
 .form-row-1 {
   width: 100%;
@@ -143,7 +151,7 @@ padding: 5px;
   margin: 10px 0px;
   color: white;
 }
-.edit-subtask-title{
+.edit-subtask-title {
   height: 50px;
   width: 100%;
   font-size: 1.2em;
@@ -151,17 +159,18 @@ padding: 5px;
   outline: none;
   background-color: transparent;
 }
-.edit-subtask{
-  padding: 0 10px!important;
-border-radius: 5px;
-background-color: white; 
-display: flex;
-gap: 10px;
-/* padding: 10px; */
-border: solid grey 2px;
-align-items: center;
+.edit-subtask {
+  padding: 0 10px !important;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  gap: 20px;
+  /* padding: 10px; */
+  /* border: solid blueviolet 1px; */
+  margin-bottom: 5px;
+  align-items: center;
 }
-.true{
+.true {
   text-decoration: line-through;
   color: rgb(252, 98, 98);
 }

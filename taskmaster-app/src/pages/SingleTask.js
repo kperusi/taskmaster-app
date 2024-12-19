@@ -298,7 +298,7 @@ fetchUserTasks()
     }
   }
 
-  console.log(dueDate.split("T")[0])
+  console.log(dueDate?.split("T")[0])
 
   if (loading) {
     return <div>Loading...</div>;
@@ -412,10 +412,13 @@ fetchUserTasks()
           >{`Subtasks (${singleTask.subtasks?.length})`}</h3>
           {singleTask.subtasks?.map((subtask) => (
             <div className="subtask" key={subtask._id}>
-              <input type="checkbox" checked={subtask.completed} />
               <p className={`${subtask.completed}`}>{subtask.title}</p>
+              <input type="checkbox" checked={subtask.completed} />
+          
             </div>
+           
           ))}
+            
         </div>
 
         <div className="createdBy-x">
@@ -460,7 +463,7 @@ fetchUserTasks()
                 className="due-date-input"
                 type="date"
                 name="due-date"
-                value={dueDate.split("T")[0]}
+                value={dueDate?.split("T")[0]}
                 onChange={(e) => setDueDate(e.target.value)}
               />
             </div>
@@ -473,7 +476,7 @@ fetchUserTasks()
 
             <div className="col-1">
               <p style={{ color: "gray" }}>Priority</p>
-              <select onChange={(e) => setPriority(e.target.value)}>
+              <select className="edit-select" onChange={(e) => setPriority(e.target.value)}>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
