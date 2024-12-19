@@ -10,16 +10,12 @@ export default function Registration() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
+  const [cpassword, setCPassword] = useState();
   const [user, setUser] = useState({});
+  const [msg, setMsg] = useState("");
+  const [msgColor, setMsgColor] = useState("");
 
   async function createTaskHandler(id) {
-    // e.preventDefault();
-    // console.log(params);
-    // Check if values are empty
-    // if (!title || !description) {
-    //   console.error("Title and description are required");
-    //   return;
-    // }
     const today = new Date();
 
     // Create a new Date object for tomorrow by adding 1 day
@@ -49,14 +45,17 @@ export default function Registration() {
     try {
       const token = localStorage.getItem("token"); // or however you store your token
 
-      const response = await fetch("https://taskmaster-apps.onrender.com/addTask", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(newTask),
-      });
+      const response = await fetch(
+        "https://taskmaster-apps.onrender.com/addTask",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(newTask),
+        }
+      );
 
       // Log the full error response
       const data = await response.json();
@@ -80,6 +79,15 @@ export default function Registration() {
 
   async function handleRegister(e) {
     e.preventDefault();
+
+if(password!==cpassword) {
+  setMsgColor('red')
+  setMsg("Passwords do not match");
+  return;
+}
+
+
+
     let firstname = firstName;
     let lastname = lastName;
 
@@ -87,22 +95,28 @@ export default function Registration() {
     console.log(newUser);
 
     try {
-      const response = await fetch(`https://taskmaster-apps.onrender.com/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      });
+      const response = await fetch(
+        `https://taskmaster-apps.onrender.com/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        }
+      );
 
       const data = await response.json();
 
       if (!response.ok) {
+        setMsgColor('red')
+        setMsg(data.message);
         throw new Error(data.message || "Registration failed");
       }
       console.log("registration successful");
       console.log(data.id);
-
+      setMsgColor('green')
+      setMsg("You are now registered successfully");
       createTaskHandler(data.id);
 
       // this.showMessage(this.registerSuccess, 'Registration successful! Please login.');
@@ -113,6 +127,8 @@ export default function Registration() {
     } catch (error) {
       // this.showMessage(this.registerError, error.message);
       console.log(error.message);
+      setMsgColor('red')
+      setMsg("Registration failed");
     }
   }
 
@@ -131,7 +147,9 @@ export default function Registration() {
             <button
               className="cancel-btn"
               id="form-cancel-btn"
-                onClick={()=>{navigate('/')}}
+              onClick={() => {
+                navigate("/");
+              }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -203,9 +221,11 @@ export default function Registration() {
                     id="password2"
                     className="confirm-password"
                     placeholder="Confirm password"
+                    onChange={(e) => setCPassword(e.target.value)}
                   />
                 </div>
               </div>
+              <p className={`${msgColor}`}>{msg}</p>
 
               <button
                 type="submit"
@@ -216,7 +236,7 @@ export default function Registration() {
               </button>
             </form>
 
-            <h1>OR</h1>
+            <h1 className="or">- OR -</h1>
             {/* <!-- sign in with google button --> */}
             <button className="google-btn">
               <svg

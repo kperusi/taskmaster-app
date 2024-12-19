@@ -266,7 +266,7 @@ export default function DashboardPage() {
                     <XAxis dataKey="name" />
                     <YAxis />
                     <Tooltip />
-                    <Bar dataKey="completed" stackId="a" fill="#4CAF50" />
+                    <Bar dataKey="completed" stackId="a" fill="blueviolet" />
                     <Bar dataKey="pending" stackId="a" fill="#FFA726" />
                   </BarChart>
                 </ResponsiveContainer>
