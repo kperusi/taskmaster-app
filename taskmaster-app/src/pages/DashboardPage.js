@@ -205,9 +205,10 @@ export default function DashboardPage() {
                   <p>{task.title}</p>
 
                   <div className="recent-r-1">
-                    <p className="r-priority">{task.priority}</p>
-                    <p className="r-status">{task.status}</p>
-
+                    <p className={`${task.priority}`}>{task.priority?.slice(0,1).toUpperCase()}{task.priority?.slice(1)}</p>
+                   <hr/>
+                    <p className="r-status">{task.status?.toUpperCase()}</p>
+<hr/>
                     <div className="r-duedate">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

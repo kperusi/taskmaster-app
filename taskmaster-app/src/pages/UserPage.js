@@ -367,6 +367,7 @@ export default function UserPage() {
                   name="task-input-status"
                   class="task-input-status"
                   id="task-status-input"
+                  disabled
                 >
                   <option value="to-do">Todo</option>
                   <option value="in-progress">In-Progress</option>

@@ -132,7 +132,7 @@ export default function Task() {
             className="todo-container"
             onClick={() => handleNavigate(`${task._id}`)}
           >
-            <p className={`${task.priority}`}>{task.priority}</p>
+             <p className={`${task.priority}`}>{task.priority?.slice(0,1).toUpperCase()}{task.priority?.slice(1)}</p>
             <h3>{task.title}</h3>
             <p style={{ color: "grey" }}>{task.description}</p>
             {/* <div className="row-1"></div> */}
@@ -160,7 +160,10 @@ export default function Task() {
               </div>
             </div>
 
-
+            <div style={{ display: "flex", justifyContent: "space-between", marginTop:'10px' }}>
+                <p>Progress</p>
+                <p>{`${calculateProgress(task)}%`}</p>
+              </div>
             <div style={{ marginTop: "10px" }}>
               <div
                 style={{
@@ -179,10 +182,7 @@ export default function Task() {
                 ></span>
               </div>
 
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <p>Progress</p>
-                <p>{`${calculateProgress(task)}%`}</p>
-              </div>
+             
             </div>
           </div>
         ))}
@@ -198,7 +198,8 @@ export default function Task() {
             className="in-progress-container todo-container"
             onClick={() => handleNavigate(`${task._id}`)}
           >
-            <p className={`${task.priority}`}>{task.priority}</p>
+            {/* <p className={`${task.priority}`}>{task.priority}</p> */}
+            <p className={`${task.priority}`}>{task.priority?.slice(0,1).toUpperCase()}{task.priority?.slice(1)}</p>
             <h3>{task.title}</h3>
             <p style={{ color: "grey" }}>{task.description}</p>
             {/* <div className="row-1"></div> */}
@@ -232,6 +233,12 @@ export default function Task() {
               </div>
             </div>
 
+            <div style={{ display: "flex", justifyContent: "space-between", marginTop:'10px' }}>
+                <p>Progress</p>
+                <p>{`${calculateProgress(task)}%`}</p>
+              </div>
+
+
             <div style={{ marginTop: "10px" }}>
               <div
                 style={{
@@ -250,10 +257,7 @@ export default function Task() {
                 ></span>
               </div>
 
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <p>Progress</p>
-                <p>{`${calculateProgress(task)}%`}</p>
-              </div>
+              
             </div>
           </div>
         ))}
@@ -265,7 +269,8 @@ export default function Task() {
         </div>
         {completedTasks.map((task) => (
           <div key={task._id}>
-            <p className={`${task.priority}`}>{task.priority}</p>
+            {/* <p className={`${task.priority}`}>{task.priority}</p> */}
+            <p className={`${task.priority}`}>{task.priority?.slice(0,1).toUpperCase()}{task.priority?.slice(1)}</p>
             <h3>{task.title}</h3>
             <p style={{ color: "grey" }}>{task.description}</p>
             <div className="row-1">

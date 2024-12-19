@@ -21,7 +21,7 @@ export default function SingleTask() {
   const [subtaskTilte, setsubtaskTilte] = useState();
   const [subtaskCompleted, setsubtaskCompleted] = useState();
   const [subtasks, setSubtasks] = useState([]);
-const [loading, setLoading]= useState(true)
+  const [loading, setLoading] = useState(true);
   const tasks = useSelector((state) => state.tasks.tasks);
 
   // const {tasks}=useOutletContext()
@@ -30,7 +30,7 @@ const [loading, setLoading]= useState(true)
     setUser(JSON.parse(localStorage.getItem("userData")));
   }, []);
 
-  console.log(user._id)
+  console.log(user._id);
 
   const formatDate = function (date, format = "default") {
     const parsedDate = new Date(date?.split("T")[0]);
@@ -92,7 +92,10 @@ const [loading, setLoading]= useState(true)
         localStorage.setItem("singleTasks", JSON.stringify(data.task));
         setSingleTask(data.task);
         setSubtasks(data.task.subtasks);
-        setLoading(false)
+        setTitle(data.task.title);
+        setDescription(data.task.description);
+        setDueDate(data.task.dueDate);
+        setLoading(false);
       }
     } catch (error) {
       console.error("Error fetching tasks:", error);
@@ -105,13 +108,16 @@ const [loading, setLoading]= useState(true)
       const token = localStorage.getItem("token"); // Get stored token
       console.log(token);
 
-      const response = await fetch("https://taskmaster-apps.onrender.com/tasks", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://taskmaster-apps.onrender.com/tasks",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const data = await response.json();
 
@@ -133,7 +139,9 @@ const [loading, setLoading]= useState(true)
   useEffect(() => {
     fetchSingleTask();
     setTitle(singleTask?.title);
-console.log('setting subtasks')
+    setDescription(singleTask?.description);
+    setDueDate(singleTask?.dueDate);
+    console.log("setting subtasks");
     // setSubtasks(singleTask?.subtasks);
   }, []);
 
@@ -147,9 +155,8 @@ console.log('setting subtasks')
     } else setDisplayVisibility("visible");
   };
 
-console.log(singleTask.subtasks)
-console.log(subtasks)
-
+  console.log(singleTask.subtasks);
+  console.log(subtasks);
 
   const handleSubtasksTitle = (index, e) => {
     console.log(index);
@@ -158,6 +165,10 @@ console.log(subtasks)
     subtasks[index].title = e.target.value;
 
     console.log(">>", subtasks[index].title);
+  };
+
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
   };
 
   const handleSubtaskComplete = (e, index) => {
@@ -213,12 +224,13 @@ console.log(subtasks)
         // alert("Task updated successfully!");
         console.log("Updated task:", updatedTask);
         fetchSingleTask();
+        fetchUserTasks()
       } else {
         console.log("Failed Updated task");
       }
 
       fetchSingleTask();
-
+fetchUserTasks()
       // Store token
       // console.log("login successful");
       // localStorage.setItem("token", data.token);
@@ -285,8 +297,8 @@ console.log(subtasks)
     }
   }
 
-  if(loading){
-    return <div>Loading...</div>
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
   return (
@@ -397,7 +409,7 @@ console.log(subtasks)
           >{`Subtasks (${singleTask.subtasks?.length})`}</h3>
           {singleTask.subtasks?.map((subtask) => (
             <div className="subtask" key={subtask._id}>
-              {/* <input type="checkbox" checked={subtask.completed} /> */}
+              <input type="checkbox" checked={subtask.completed} />
               <p className={`${subtask.completed}`}>{subtask.title}</p>
             </div>
           ))}
@@ -423,7 +435,7 @@ console.log(subtasks)
               type="text"
               name="title"
               id="title"
-              value={singleTask.title}
+              value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
 
@@ -432,7 +444,7 @@ console.log(subtasks)
               className="desc-input"
               id="description"
               name="description"
-              value={singleTask.description}
+              value={description}
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
           </div>
@@ -445,7 +457,7 @@ console.log(subtasks)
                 className="due-date-input"
                 type="date"
                 name="due-date"
-                // value={singleTask.dueDate?.split("T")}
+                value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
               />
             </div>
@@ -475,7 +487,7 @@ console.log(subtasks)
                 <input
                   type="checkbox"
                   onChange={(e) => handleSubtaskComplete(e, i)}
-                  // checked={subtasks[i].completed}
+                  checked={subtasks[i].completed}
                 />
                 <input
                   className="edit-subtask-title"

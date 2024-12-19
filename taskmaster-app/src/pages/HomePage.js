@@ -23,13 +23,7 @@ setShowRegister('hidden')
   };
 
   async function createTaskHandler(id) {
-    // e.preventDefault();
-    // console.log(params);
-    // Check if values are empty
-    // if (!title || !description) {
-    //   console.error("Title and description are required");
-    //   return;
-    // }
+  
     const today = new Date();
     
     // Create a new Date object for tomorrow by adding 1 day
@@ -220,81 +214,10 @@ setShowRegister('hidden')
                   platform.
                 </p>
 
-                <div className="hero-btn-x">
-                  <button className="learn-more">Learn More</button>
-                  <button className="sign-up-btn">Start for free</button>
-                </div>
+               
               </div>
 
-              {/* <!-- sign up section ********************************************************************************
-               ****************************************************************************************************--> */}
-
-           
-
-
-              {/* <div className={`${showLogin} login`} id="loginForm">
-                <div className="login-x">
-                  <div className="login-hero-x">
-                    <h1>Taskmaster</h1>
-                    <p>Welcome Back!</p>
-                  </div>
-
-                  <div className="login-form">
-                    <button
-                      className="cancel-btn"
-                      id="form-cancel-btn"
-                      onClick={showLoginHandler}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        height="40px"
-                        viewBox="0 -960 960 960"
-                        width="40px"
-                        fill="grey"
-                      >
-                        <path d="m332-285.33 148-148 148 148L674.67-332l-148-148 148-148L628-674.67l-148 148-148-148L285.33-628l148 148-148 148L332-285.33ZM480-80q-82.33 0-155.33-31.5-73-31.5-127.34-85.83Q143-251.67 111.5-324.67T80-480q0-83 31.5-156t85.83-127q54.34-54 127.34-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 82.33-31.5 155.33-31.5 73-85.5 127.34Q709-143 636-111.5T480-80Zm0-66.67q139.33 0 236.33-97.33t97-236q0-139.33-97-236.33t-236.33-97q-138.67 0-236 97-97.33 97-97.33 236.33 0 138.67 97.33 236 97.33 97.33 236 97.33ZM480-480Z" />
-                      </svg>
-                    </button>
-
-                    <h1>Login</h1>
-
-                    <form id="loginFormElement" className="add-task-form">
-                      <div className="sign-up-name-x">
-                        <label htmlFor="Email">Email</label>
-                        <input
-                          type="email"
-                          name="email"
-                          id="loginEmail"
-                          className="email"
-                          placeholder="Email"
-                          onChange={(e) => setEmail(e.target.value)}
-                        />
-                      </div>
-                      <div className="sign-up-name-x">
-                        <label htmlFor="password">Password</label>
-                        <input
-                          type="password"
-                          name="password"
-                          className="password"
-                          id="loginPassword"
-                          onChange={(e) => setPassword(e.target.value)}
-                        />
-                      </div>
-
-                      <button
-                        type="submit"
-                        className="form-sign-up-btn"
-                        onClick={loginHandler}
-                      >
-                        Login
-                      </button>
-                      <span id="showRegisterLink" onClick={showLoginHandler}>
-                        Don't have an account? <NavLink>Register</NavLink> 
-                      </span>
-                    </form>
-                  </div>
-                </div>
-              </div> */}
+            
             </div>
 
             <section className="home-section-two">
@@ -302,6 +225,11 @@ setShowRegister('hidden')
               <div className="img-x">
                 <img src={img1} alt="dashboard-image" />
               </div>
+
+              <div className="hero-btn-x">
+                  <button className="learn-more">Learn More</button>
+                  <button className="sign-up-btn"  onClick={()=>{navigate('taskmaster/register')}}>Start for free</button>
+                </div>
             </section>
 
             <section className="home-section-three">
@@ -550,28 +478,7 @@ setShowRegister('hidden')
           </div>
         </div>
 
-        {/* <!-- Register Page --> */}
-        <div id="register-page" className="page register-page">
-          <h2>Create an Account</h2>
-          <div id="register-error" className="error-message"></div>
-          <form id="register-form">
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input type="text" name="name" required />
-            </div>
-            <div className="form-group">
-              <label>Email</label>
-              <input type="email" name="email" required />
-            </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input type="password" name="password" required />
-            </div>
-            <button type="submit" className="btn">
-              Register
-            </button>
-          </form>
-        </div>
+    
       </section>
     </main>
   );
