@@ -7,10 +7,10 @@
 .task-main-container section {
   display: flex;
   flex-direction: column;
-  /* background-color: rgb(240, 240, 240); */
+  /* background-color: rgb(228, 122, 122); */
   padding: 10px 5px;
   gap: 20px;
-  width: 50%;
+  width: 35%;
   border: solid 2px rgb(230, 212, 248);
   border-radius: 5px;
 }
@@ -34,6 +34,7 @@
   border-radius: 3px;
   width: fit-content;
   text-align: center;
+  align-self: last baseline;
 }
 .medium {
   background-color: rgb(190, 157, 243);
@@ -42,6 +43,7 @@
   border-radius: 3px;
   width: fit-content;
   text-align: center;
+  align-self: last baseline;
 }
 .low {
   background-color: rgb(160, 95, 140);
@@ -50,6 +52,7 @@
   border-radius: 3px;
   width: fit-content;
   text-align: center;
+  align-self: last baseline;
 }
 .tasks-content {
   display: flex;

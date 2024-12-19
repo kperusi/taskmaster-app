@@ -47,13 +47,12 @@ export default function Login() {
       console.log("login successful");
       localStorage.setItem("token", data.token);
 
-      // this.showMessage(this.loginSuccess, 'Login successful! Redirecting...');
       console.log("login successful! Redirecting...");
       setMsgColor('green')
       setMsg('Login successful!');
       setTimeout(() => {
         navigate("/user");
-      }, 2500);
+      }, 1500);
     } catch (error) {
       // this.showMessage(this.loginError, error.message);
       console.log(error.message);
@@ -124,12 +123,12 @@ export default function Login() {
               >
                 Login
               </button>
-              <span
+              <div style={{display:'flex',flexDirection: 'row',gap:'2px'}}
                 id="showRegisterLink"
                 onClick={() => navigate("/taskmaster/register")}
               >
                 Don't have an account? <NavLink>Register</NavLink>
-              </span>
+              </div>
             </form>
           </div>
         </div>

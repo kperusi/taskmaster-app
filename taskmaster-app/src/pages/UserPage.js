@@ -16,13 +16,16 @@ export default function UserPage() {
   const [status, setStatus] = useState("to-do");
   const [priority, setPriority] = useState("medium");
   const [dueDate, setDueDate] = useState("");
-  const [showSetting, setShowSettig]=useState("");
+  const [showSetting, setShowSettig] = useState("");
   const { params } = useParams();
   const location = useLocation();
-  const [selectedItem ,setSelectedItem]=useState({dashboard:'',task:'',calender:''})
-const [svgColor,setSvgColor] = useState('grey')
+  const [selectedItem, setSelectedItem] = useState({
+    dashboard: "",
+    task: "",
+    calender: "",
+  });
+  const [svgColor, setSvgColor] = useState({dashboardColor:'grey',taskColor:'grey',calenderColor:'grey'});
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("userData")));
@@ -166,42 +169,53 @@ const [svgColor,setSvgColor] = useState('grey')
   const handleNavigate = (route) => {
     navigate(route);
   };
-  const handleClick = (item,e) => {
+  const handleClick = (item, e) => {
     dispatch(setShowSelection(item));
-handleNavigate(item);
+    handleNavigate(item);
 
-console.log(item)
-    if(item==='dashboard'){
-      setSelectedItem({dashboard:'dashboard-selected',task:'',calender:''});
-    setSvgColor('white')
+    console.log(item);
+    if (item === "dashboard") {
+      setSelectedItem({
+        dashboard: "dashboard-selected",
+        task: "",
+        calender: "",
+      });
+      setSvgColor({dashboardColor:'white',taskColor:'grey',calenderColor:'grey'});
     }
-    if(item==='tasks'){
-      setSelectedItem({dashboard:'',task:'task-selected',calender:''});
-      setSvgColor('white')
+    if (item === "tasks") {
+      setSelectedItem({ dashboard: "", task: "task-selected", calender: "" });
+      setSvgColor({dashboardColor:'grey',taskColor:'white',calenderColor:'grey'});
     }
-    if(item==='calender'){
-      setSelectedItem({dashboard:'',task:'',calender:'calender-selected'});
-      setSvgColor('white')
+    if (item === "calender") {
+      setSelectedItem({
+        dashboard: "",
+        task: "",
+        calender: "calender-selected",
+      });
+      setSvgColor({dashboardColor:'grey',taskColor:'grey',calenderColor:'white'});
     }
   };
-  const handleShowSetting=()=>{
-    setShowSettig('show')
-  }
+  const handleShowSetting = () => {
+    setShowSettig("show");
+  };
 
   async function logout() {
     try {
       const token = localStorage.getItem("token");
-  
-      const response = await fetch("https://taskmaster-apps.onrender.com/logout", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-  
+
+      const response = await fetch(
+        "https://taskmaster-apps.onrender.com/logout",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
       const data = await response.json();
-  
+
       if (response.ok) {
         // Clear all auth-related data from localStorage
         localStorage.removeItem("token");
@@ -209,8 +223,8 @@ console.log(item)
         localStorage.removeItem("user");
         // Redirect to login page
         // window.location.href = "./home.html";
-        setShowSettig('')
-        navigate('/');
+        setShowSettig("");
+        navigate("/");
       } else {
         throw new Error(data.message || "Logout failed");
       }
@@ -219,8 +233,6 @@ console.log(item)
       // Handle error (show error message to user)
     }
   }
-  
-
 
   return (
     <main className="user-page-x">
@@ -254,7 +266,9 @@ console.log(item)
               <button>Account</button>
             </li>
             <li>
-              <button className="logout" onClick={logout}>Logout</button>
+              <button className="logout" onClick={logout}>
+                Logout
+              </button>
             </li>
           </ul>
           <p>{user.email}</p>
@@ -426,7 +440,7 @@ console.log(item)
                 height="24px"
                 viewBox="0 -960 960 960"
                 width="24px"
-                fill={`${svgColor}`}
+                fill={`${svgColor.dashboardColor}`}
               >
                 <path d="M120-840h320v320H120v-320Zm80 80v160-160Zm320-80h320v320H520v-320Zm80 80v160-160ZM120-440h320v320H120v-320Zm80 80v160-160Zm440-80h80v120h120v80H720v120h-80v-120H520v-80h120v-120Zm-40-320v160h160v-160H600Zm-400 0v160h160v-160H200Zm0 400v160h160v-160H200Z" />
               </svg>
@@ -442,7 +456,7 @@ console.log(item)
                 height="24px"
                 viewBox="0 -960 960 960"
                 width="24px"
-                fill={`${svgColor}`}
+                fill={`${svgColor.taskColor}`}
               >
                 <path d="m438-240 226-226-58-58-169 169-84-84-57 57 142 142ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z" />
               </svg>
@@ -457,7 +471,7 @@ console.log(item)
                 height="24px"
                 viewBox="0 -960 960 960"
                 width="24px"
-                fill={`${svgColor}`}
+                fill={`${svgColor.calenderColor}`}
               >
                 <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm80 240v-80h400v80H280Zm0 160v-80h280v80H280Z" />
               </svg>
