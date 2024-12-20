@@ -67,6 +67,11 @@ export default function SingleTask() {
   async function fetchSingleTask() {
     try {
       const token = localStorage.getItem("token"); // Get stored token
+      if(!token) {
+        navigate("/taskmaster/login");
+        return;
+      }
+
       console.log(">>", token);
 
       const response = await fetch(
@@ -108,6 +113,10 @@ export default function SingleTask() {
     try {
       const token = localStorage.getItem("token"); // Get stored token
       console.log(token);
+      if(!token) {
+        navigate("taskmaster/login");
+        return;
+      }
 
       const response = await fetch(
         "https://taskmaster-apps.onrender.com/tasks",
@@ -139,9 +148,9 @@ export default function SingleTask() {
 
   useEffect(() => {
     fetchSingleTask();
-    setTitle(singleTask?.title);
-    setDescription(singleTask?.description);
-    setDueDate(singleTask?.dueDate);
+    // setTitle(singleTask?.title);
+    // setDescription(singleTask?.description);
+    // setDueDate(singleTask?.dueDate);
     console.log("setting subtasks");
     // setSubtasks(singleTask?.subtasks);
   }, []);
@@ -264,7 +273,8 @@ fetchUserTasks()
 
       const data = await response.json();
       console.log(data.message);
-      // fetchUserTasks();
+      fetchSingleTask()
+      fetchUserTasks();
       return data.task;
     } catch (error) {
       console.error("Delete subtask error:", error);
@@ -298,7 +308,7 @@ fetchUserTasks()
     }
   }
 
-  console.log(dueDate?.split("T")[0])
+  // console.log(dueDate?.split("T")[0])
 
   if (loading) {
     return <div>Loading...</div>;

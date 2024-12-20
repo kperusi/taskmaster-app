@@ -761,3 +761,38 @@ form button {
   font-size: 1em;
   color: gray;
 }
+.login-loading {
+  display: flex;
+  flex-direction: row;
+  height: 6px;
+  background-color: grey;
+  width: 100%;
+}
+
+
+
+.login-loading span {
+  background-color: blueviolet;
+  width: 20%;
+  animation-name: motionLoading;
+  animation-duration: 3s;
+  transition: all ease-in;
+  animation-iteration-count: infinite;
+}
+
+@keyframes motion2 {
+  from {
+    margin-top: -40px;
+  }
+  to {
+    margin-top: 0px;
+  }
+}
+@keyframes motionLoading {
+  from {
+    margin-left: 0px;
+  }
+  to {
+    margin-left: 100%;
+  }
+}

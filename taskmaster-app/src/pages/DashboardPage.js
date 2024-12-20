@@ -21,16 +21,16 @@ export default function DashboardPage() {
   const [todoTask, setTodoTask] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
   const [overdueTask, setOverdueTask] = useState([]);
-  const [recentTasks, setRecentTasks] = useState([]);
+  const [todayTasks, setTodayTasks] = useState([]);
   const [taskInProgress, setTaskInProgress] = useState([]);
   const [currentTimeOfDay, setCurrentTimeOfDay] = useState();
 
   const taskProgressData = [
-    { name: "Mon", completed: 5, pending: 3 },
-    { name: "Tue", completed: 7, pending: 4 },
-    { name: "Wed", completed: 4, pending: 6 },
-    { name: "Thu", completed: 8, pending: 2 },
-    { name: "Fri", completed: 6, pending: 3 },
+    { name: "Mon", completed: 5},
+    { name: "Tue", completed: 7},
+    { name: "Wed", completed: 4},
+    { name: "Thu", completed: 8},
+    { name: "Fri", completed: 6},
   ];
 
   
@@ -107,9 +107,10 @@ export default function DashboardPage() {
     setTodoTask(filterTasksByStatus("to-do"));
     setCompletedTasks(filterTasksByStatus("completed"));
     setOverdueTask(filterTasksByDueDate((date, today) => date < today));
+    setTodayTasks(filterTasksByDueDate((date, today) => date===today));
   }, [tasks]);
 
-  console.log(tasks);
+  console.log(todayTasks);
   // console.log(recentTasks);
 
   return (

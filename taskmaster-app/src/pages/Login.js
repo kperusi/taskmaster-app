@@ -8,13 +8,11 @@ export default function Login() {
   const [msg, setMsg] = useState();
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
   const [user, setUser] = useState({});
-  const [msgColor, setMsgColor] = useState('')
-
-
+  const [msgColor, setMsgColor] = useState("");
 
   async function loginHandler(e) {
     e.preventDefault();
@@ -22,13 +20,16 @@ export default function Login() {
     console.log(email, password);
 
     try {
-      const response = await fetch(`https://taskmaster-apps.onrender.com/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        `https://taskmaster-apps.onrender.com/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       const data = await response.json();
       console.log("data", data.user);
@@ -37,26 +38,28 @@ export default function Login() {
       localStorage.setItem("userData", JSON.stringify(data.user));
 
       if (!response.ok) {
-        
-      setMsgColor('red')
-        setMsg(data.error)
+        setLoading(false);
+        setMsgColor("red");
+        setMsg(data.error);
         throw new Error(data.message || "Login failed");
       }
 
       // Store token
+      setLoading(false);
       console.log("login successful");
       localStorage.setItem("token", data.token);
 
       console.log("login successful! Redirecting...");
-      setMsgColor('green')
-      setMsg('Login successful!');
+      setMsgColor("green");
+      setMsg("Login successful!");
       setTimeout(() => {
         navigate("/user");
       }, 1500);
     } catch (error) {
       // this.showMessage(this.loginError, error.message);
       console.log(error.message);
-      setMsgColor('red');
+      setLoading(false);
+      setMsgColor("red");
       setMsg(error.message);
     }
   }
@@ -74,7 +77,7 @@ export default function Login() {
             <button
               className="cancel-btn"
               id="form-cancel-btn"
-              onClick={()=>navigate("/")}
+              onClick={() => navigate("/")}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -115,6 +118,11 @@ export default function Login() {
               <div className="error-x">
                 <p className={`error ${msgColor}`}>{msg}</p>
               </div>
+              {loading && (
+                <div className="login-loading">
+                  <span></span>
+                </div>
+              )}
 
               <button
                 type="submit"
@@ -123,7 +131,8 @@ export default function Login() {
               >
                 Login
               </button>
-              <div style={{display:'flex',flexDirection: 'row',gap:'2px'}}
+              <div
+                style={{ display: "flex", flexDirection: "row", gap: "2px" }}
                 id="showRegisterLink"
                 onClick={() => navigate("/taskmaster/register")}
               >
