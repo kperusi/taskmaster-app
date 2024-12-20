@@ -14,6 +14,7 @@ export default function Registration() {
   const [user, setUser] = useState({});
   const [msg, setMsg] = useState("");
   const [msgColor, setMsgColor] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function createTaskHandler(id) {
     const today = new Date();
@@ -78,15 +79,16 @@ export default function Registration() {
   }
 
   async function handleRegister(e) {
+    setLoading(true);
+    setMsg("");
     e.preventDefault();
 
-if(password!==cpassword) {
-  setMsgColor('red')
-  setMsg("Passwords do not match");
-  return;
-}
-
-
+    if (password !== cpassword) {
+      setLoading(false);
+      setMsgColor("red");
+      setMsg("Passwords do not match");
+      return;
+    }
 
     let firstname = firstName;
     let lastname = lastName;
@@ -109,13 +111,15 @@ if(password!==cpassword) {
       const data = await response.json();
 
       if (!response.ok) {
-        setMsgColor('red')
+        setLoading(false);
+        setMsgColor("red");
         setMsg(data.message);
         throw new Error(data.message || "Registration failed");
       }
+      setLoading(false);
       console.log("registration successful");
       console.log(data.id);
-      setMsgColor('green')
+      setMsgColor("green");
       setMsg("You are now registered successfully");
       createTaskHandler(data.id);
 
@@ -127,7 +131,8 @@ if(password!==cpassword) {
     } catch (error) {
       // this.showMessage(this.registerError, error.message);
       console.log(error.message);
-      setMsgColor('red')
+      setLoading(false);
+      setMsgColor("red");
       setMsg("Registration failed");
     }
   }
@@ -227,6 +232,14 @@ if(password!==cpassword) {
               </div>
               <p className={`${msgColor}`}>{msg}</p>
 
+              <section className="login-section-rw-2">
+                {loading && (
+                  <div className="login-loading">
+                    <span></span>
+                  </div>
+                )}
+              </section>
+
               <button
                 type="submit"
                 className="form-sign-up-btn"
@@ -234,6 +247,13 @@ if(password!==cpassword) {
               >
                 Sign up
               </button>
+              <div
+                style={{ display: "flex", flexDirection: "row", gap: "2px" }}
+                id="showRegisterLink"
+                onClick={() => navigate("/taskmaster/login")}
+              >
+                Already have an account? <NavLink>Login</NavLink>
+              </div>
             </form>
 
             <h1 className="or">- OR -</h1>

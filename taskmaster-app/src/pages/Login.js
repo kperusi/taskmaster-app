@@ -8,7 +8,7 @@ export default function Login() {
   const [msg, setMsg] = useState();
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
   const [user, setUser] = useState({});
@@ -16,7 +16,8 @@ export default function Login() {
 
   async function loginHandler(e) {
     e.preventDefault();
-
+setLoading(true)
+setMsg('')
     console.log(email, password);
 
     try {
@@ -118,11 +119,13 @@ export default function Login() {
               <div className="error-x">
                 <p className={`error ${msgColor}`}>{msg}</p>
               </div>
-              {loading && (
-                <div className="login-loading">
-                  <span></span>
-                </div>
-              )}
+              <section className="login-section-rw-2">
+                {loading && (
+                  <div className="login-loading">
+                    <span></span>
+                  </div>
+                )}
+              </section>
 
               <button
                 type="submit"
