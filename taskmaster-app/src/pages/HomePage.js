@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/styles.css";
 // import '../styles/homepagestyle.css'
 import img1 from "../styles/images/TaskMaster.png";
 import { NavLink, useNavigate } from "react-router";
+import Hambuger from "./Hambuger";
+import MobileMenu from "./MobileMenu";
+
 export default function HomePage() {
   const [showLogin, setShowLogin] = useState();
   const [showRegister, setShowRegister] = useState();
@@ -11,169 +14,23 @@ export default function HomePage() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
+  const [display, setDisplay] = useState("");
+  const [showMobiMenu, setShowMobiMenu] = useState("");
 
-  const showLoginHandler = () => {
-    // e.preventDefault();
-setShowRegister('hidden')
-    if (showLogin === "show") {
-      setShowLogin("hidden");
-    } else setShowLogin("show");
- 
+  const handleShowMobiMenu = () => {
+    if (showMobiMenu === true) {
+      setShowMobiMenu(false);
+    } else {
+      setShowMobiMenu(true);
+    }
   };
-
-  async function createTaskHandler(id) {
-  
-    const today = new Date();
-    
-    // Create a new Date object for tomorrow by adding 1 day
-    const tomorrow = new Date(today);
-
-    
-    let newTask = {
-      title: "Take a tour of TASKMASTER",
-      description: "Master the act of TASKMASTER",
-      dueDate: tomorrow.setDate(today.getDate() + 1),
-      status: "to-do",
-      priority: "medium",
-      subtasks: [
-        {
-          title: "Register and Login to start using TASKMASTER",
-          complete: true,
-        },
-        { title: "Get to know how to create new task", complete: false },
-        { title: "Get to know how to edit task", complete: false },
-      ], // Or you could pass in subtasks from the form
-      // Make sure you're getting the user ID correctly
-      createdBy: id, // or however you store user ID
-    };
-
-    // Log the data being sent
-    console.log("Sending task data:", newTask);
-
-    try {
-      const token = localStorage.getItem("token"); // or however you store your token
-
-      const response = await fetch("https://taskmaster-apps.onrender.com/addTask", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(newTask),
-      });
-
-      // Log the full error response
-      const data = await response.json();
-      console.log("Server response:", data);
-
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to add task");
-      }
-
-      console.log("Task added successfully:", data);
-      // fetchUserTasks();
-      // setShowAddTask("hidden");
-      // navigate("/user/dashboard");
-
-      // Handle success
-    } catch (error) {
-      console.error("Detailed error:", error);
-      // Show error to user
-    }
-  }
-
-  const showRegisterHandler = (e) => {
-    e.preventDefault();
-    setShowLogin('hidden')
-    if (showRegister === "show") {
-      setShowRegister("hidden");
-    } else setShowRegister("show");
-  };
-
-  async function loginHandler(e) {
-    e.preventDefault();
-
-    console.log(email, password);
-
-    try {
-      const response = await fetch(`http://localhost:5000/api/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-      console.log("data", data.user);
-      console.log(data.token);
-
-      localStorage.setItem("userData", JSON.stringify(data.user));
-
-      if (!response.ok) {
-        throw new Error(data.message || "Login failed");
-      }
-
-      // Store token
-      console.log("login successful");
-      localStorage.setItem("token", data.token);
-
-      // this.showMessage(this.loginSuccess, 'Login successful! Redirecting...');
-      console.log("login successful! Redirecting...");
-      setTimeout(() => {
-        navigate("user");
-      }, 2500);
-    } catch (error) {
-      // this.showMessage(this.loginError, error.message);
-      console.log(error.message);
-    }
-  }
-
-  async function handleRegister(e) {
-    e.preventDefault();
-    let firstname = firstName;
-    let lastname = lastName;
-
-    const newUser = { firstname, lastname, email, password };
-    console.log(newUser);
-
-    try {
-      const response = await fetch(`http://localhost:5000/api/auth/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || "Registration failed");
-      }
-      console.log("registration successful");
-      console.log(data.id)
-
-      createTaskHandler(data.id)
-
-
-      // this.showMessage(this.registerSuccess, 'Registration successful! Please login.');
-      setTimeout(() => {
-        showLoginHandler();
-      }, 1500);
-    } catch (error) {
-      // this.showMessage(this.registerError, error.message);
-      console.log(error.message);
-    }
-  }
+  console.log(showMobiMenu);
 
   return (
     <main>
       <section className="container" id="app">
-        {/* <!-- Login Page --> */}
-
-        <div id="login-page" className="page">
+        <div className="page">
           <div className="home-main">
             <div className="home-tool-bar-x">
               <div className="tool-bar-x">
@@ -181,19 +38,36 @@ setShowRegister('hidden')
                   <h1 className="logo">TASKMASTER</h1>
                   <p>...Orgainizing your day</p>
                 </div>
+                <nav className="non-mobi">
+                  <Hambuger
+                    user={user}
+                    handleShowMobiMenu={handleShowMobiMenu}
+                  />
+                </nav>
+                
+                  {showMobiMenu && <MobileMenu />}
+            
 
-                <div className="login-btn-x">
+                {/* <div className='mobi-menu-x'>
+                  <MobileMenu/>
+                </div> */}
+
+                <div className="login-btn-x mobi">
                   <button
                     className="login-btn"
                     id="showLogin"
-                    onClick={()=>{navigate('taskmaster/login')}}
+                    onClick={() => {
+                      navigate("taskmaster/login");
+                    }}
                   >
                     Login
                   </button>
                   <button
                     className="sign-up-btn"
                     id="showRegister"
-                    onClick={()=>{navigate('taskmaster/register')}}
+                    onClick={() => {
+                      navigate("taskmaster/register");
+                    }}
                   >
                     Start for free
                   </button>
@@ -213,11 +87,7 @@ setShowRegister('hidden')
                   and collaborate seamlessly with our intuitive task management
                   platform.
                 </p>
-
-               
               </div>
-
-            
             </div>
 
             <section className="home-section-two">
@@ -227,14 +97,23 @@ setShowRegister('hidden')
               </div>
 
               <div className="hero-btn-x">
-                  <button className="learn-more">Learn More</button>
-                  <button className="sign-up-btn"  onClick={()=>{navigate('taskmaster/register')}}>Start for free</button>
-                </div>
+                <button className="learn-more">Learn More</button>
+                <button
+                  className="sign-up-btn"
+                  onClick={() => {
+                    navigate("taskmaster/register");
+                  }}
+                >
+                  Start for free
+                </button>
+              </div>
             </section>
 
             <section className="home-section-three">
               <div className="section-three-title-x">
-                <h1>Everything You Need to Stay Organized</h1>
+                <h1 className="section-three-title">
+                  Everything You Need to Stay Organized
+                </h1>
                 <p>
                   Powerful features to help you manage tasks, collaborate with
                   your team, and achieve your goals.
@@ -242,7 +121,7 @@ setShowRegister('hidden')
               </div>
 
               <div className="feature-card color1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
                   <path
                     fill="black"
                     d="M36.406 11.719c.648 0 1.172.524 1.172 1.172v24.765h1.25a1.172 1.172 0 110 2.344H1.172a1.172 1.172 0 110-2.344h1.25V24.61c0-.647.524-1.172 1.172-1.172H8.28c.648 0 1.172.525 1.172 1.172v13.047h2.344v-8.36c0-.646.524-1.171 1.172-1.171h4.687c.648 0 1.172.525 1.172 1.172v8.36h2.344V19.921c0-.647.524-1.172 1.172-1.172h4.687c.648 0 1.172.525 1.172 1.172v17.734h2.344V12.891c0-.648.524-1.172 1.172-1.172zm-1.172 2.344h-2.343v23.593h2.343V14.063zm-9.375 7.03h-2.343v16.563h2.343V21.094zm-9.375 9.376h-2.343v7.187h2.343V30.47zM7.11 25.78H4.766v11.875h2.343V25.781zM34.062 0a3.52 3.52 0 013.516 3.516 3.52 3.52 0 01-3.516 3.515c-.72 0-1.389-.217-1.947-.59l-4.073 3.055a3.52 3.52 0 01-3.355 4.567 3.496 3.496 0 01-1.514-.344l-4.689 4.688c.22.459.344.973.344 1.515a3.52 3.52 0 01-3.515 3.515 3.52 3.52 0 01-3.488-3.949l-3.45-1.724a3.503 3.503 0 01-2.438.986 3.52 3.52 0 01-3.515-3.516 3.52 3.52 0 013.515-3.515 3.52 3.52 0 013.488 3.949l3.45 1.725a3.503 3.503 0 013.952-.643l4.689-4.688a3.496 3.496 0 01-.344-1.515 3.52 3.52 0 013.515-3.516c.72 0 1.39.218 1.948.59l4.073-3.054A3.52 3.52 0 0134.063 0zm-18.75 18.75c-.646 0-1.171.526-1.171 1.172 0 .646.525 1.172 1.171 1.172.647 0 1.172-.526 1.172-1.172 0-.646-.525-1.172-1.172-1.172zm-9.374-4.688c-.647 0-1.172.526-1.172 1.172 0 .646.525 1.172 1.171 1.172.647 0 1.172-.526 1.172-1.172 0-.646-.525-1.171-1.171-1.171zm18.75-4.687c-.647 0-1.172.526-1.172 1.172 0 .646.525 1.172 1.172 1.172.646 0 1.171-.526 1.171-1.172 0-.646-.525-1.172-1.172-1.172zm9.375-7.031c-.647 0-1.172.526-1.172 1.172 0 .646.525 1.171 1.172 1.171.646 0 1.171-.525 1.171-1.171s-.525-1.172-1.172-1.172z"
@@ -283,6 +162,15 @@ setShowRegister('hidden')
               </div>
 
               <div className="feature-card color4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="40px"
+                  viewBox="0 -960 960 960"
+                  width="40px"
+                  fill="#000000"
+                >
+                  <path d="M480-80q-139.67-35-229.83-161.5Q160-368 160-520v-240l320-120 320 120v240q0 152-90.17 278.5Q619.67-115 480-80Zm0-69.33q103-33.34 171-125.17T730.67-480H480v-328.33l-253.33 94.66V-520q0 11.67.33 19.67.33 8 2.33 20.33H480v330.67Z" />
+                </svg>
                 <h1>Security</h1>
                 <p>
                   "Enterprise-grade security to keep your data safe and
@@ -333,7 +221,7 @@ setShowRegister('hidden')
                     TASKMASTER has transformed how our team collaborates. It's
                     incredibly intuitive and powerful.
                   </p>
-                  <h3>Sarah Jones</h3>
+                  <h4>Sarah Jones</h4>
                   <p>CEO homeMade</p>
                 </div>
 
@@ -372,7 +260,7 @@ setShowRegister('hidden')
                     TASKMASTER has transformed how our team collaborates. It's
                     incredibly intuitive and powerful.
                   </p>
-                  <h3>Alex Deckson</h3>
+                  <h4>Alex Deckson</h4>
                   <p>CEO Giratee</p>
                 </div>
               </div>
@@ -477,8 +365,6 @@ setShowRegister('hidden')
             </footer>
           </div>
         </div>
-
-    
       </section>
     </main>
   );

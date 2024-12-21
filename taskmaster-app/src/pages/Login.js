@@ -135,7 +135,7 @@ setMsg('')
                 Login
               </button>
               <div
-                style={{ display: "flex", flexDirection: "row", gap: "2px" }}
+                style={{ display: "flex", flexDirection: "row", gap: "2px",paddingBottom:'20px' }}
                 id="showRegisterLink"
                 onClick={() => navigate("/taskmaster/register")}
               >

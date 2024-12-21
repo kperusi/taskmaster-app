@@ -16,6 +16,9 @@ export default function Registration() {
   const [msgColor, setMsgColor] = useState("");
   const [loading, setLoading] = useState(false);
 
+// console.log(JSON.parse(localStorage.getItem("userData")) || null)
+
+
   async function createTaskHandler(id) {
     const today = new Date();
 
