@@ -66,7 +66,7 @@ setMsg('')
   }
 
   return (
-    <main>
+    <main className="login-main">
       <div className={`login`} id="loginForm">
         <div className="login-x">
           <div className="login-hero-x">
@@ -136,7 +136,6 @@ setMsg('')
               </button>
               <div
                 style={{ display: "flex", flexDirection: "row", gap: "2px",paddingBottom:'20px' }}
-                id="showRegisterLink"
                 onClick={() => navigate("/taskmaster/register")}
               >
                 Don't have an account? <NavLink>Register</NavLink>

@@ -26,14 +26,13 @@ export default function DashboardPage() {
   const [currentTimeOfDay, setCurrentTimeOfDay] = useState();
 
   const taskProgressData = [
-    { name: "Mon", completed: 5},
-    { name: "Tue", completed: 7},
-    { name: "Wed", completed: 4},
-    { name: "Thu", completed: 8},
-    { name: "Fri", completed: 6},
+    { name: "Mon", completed: 5 },
+    { name: "Tue", completed: 7 },
+    { name: "Wed", completed: 4 },
+    { name: "Thu", completed: 8 },
+    { name: "Fri", completed: 6 },
   ];
 
-  
   const tasks =
     useSelector((state) => state.tasks.tasks) ||
     JSON.parse(localStorage.getItem("tasks"));
@@ -107,7 +106,7 @@ export default function DashboardPage() {
     setTodoTask(filterTasksByStatus("to-do"));
     setCompletedTasks(filterTasksByStatus("completed"));
     setOverdueTask(filterTasksByDueDate((date, today) => date < today));
-    setTodayTasks(filterTasksByDueDate((date, today) => date===today));
+    setTodayTasks(filterTasksByDueDate((date, today) => date === today));
   }, [tasks]);
 
   console.log(todayTasks);
@@ -121,7 +120,7 @@ export default function DashboardPage() {
             <div className="name-salutation-x">
               <h1 className="dashboard-name">
                 {" "}
-                Hi! {user.firstname} {user.lastname}
+                Hi!  {user.firstname} {user.lastname}
               </h1>
               <h3 className="dashboard-salutation">{currentTimeOfDay}</h3>
             </div>
@@ -206,10 +205,13 @@ export default function DashboardPage() {
                   <p>{task.title}</p>
 
                   <div className="recent-r-1">
-                    <p className={`${task.priority}`}>{task.priority?.slice(0,1).toUpperCase()}{task.priority?.slice(1)}</p>
-                   <hr/>
+                    <p className={`${task.priority}`}>
+                      {task.priority?.slice(0, 1).toUpperCase()}
+                      {task.priority?.slice(1)}
+                    </p>
+                    <hr />
                     <p className="r-status">{task.status?.toUpperCase()}</p>
-<hr/>
+                    <hr />
                     <div className="r-duedate">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -231,52 +233,32 @@ export default function DashboardPage() {
             <div className="upcoming-task">
               <h3>Weekly Progress</h3>
 
-              {/* <div> */}
-                {/* <ResponsiveContainer width="100%" height="100%">
-                  <BarChart
-                    width={500}
-                    height={300}
-                    data={data}
-                    margin={{
-                      top: 5,
-                      right: 30,
-                      left: 20,
-                      bottom: 5,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar
-                      dataKey="pv"
-                      fill="#8884d8"
-                      activeBar={<Rectangle fill="pink" stroke="blue" />}
-                    />
-                    <Bar
-                      dataKey="uv"
-                      fill="#82ca9d"
-                      activeBar={<Rectangle fill="gold" stroke="purple" />}
-                    />
-                  </BarChart>
-                </ResponsiveContainer> */}
-
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={taskProgressData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="completed" stackId="a" fill="blueviolet" />
-              
-                  </BarChart>
-                </ResponsiveContainer>
-              {/* </div> */}
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={taskProgressData} width="100%" height="100%">
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Bar dataKey="completed" stackId="a" fill="blueviolet" />
+                </BarChart>
+              </ResponsiveContainer>
             </div>
           </div>
         </div>
       </div>
+      {/* <div className="upcoming-task-2">
+        <h3>Weekly Progress</h3>
+
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={taskProgressData} width="100%" height="100%">
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="completed" stackId="a" fill="blueviolet" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div> */}
     </main>
   );
 }

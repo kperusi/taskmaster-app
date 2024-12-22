@@ -280,7 +280,7 @@ footer {
 }
 
 .login {
-  height: 100vh;
+  /* height: 100vh; */
 }
 a:hover {
   cursor: pointer;
@@ -577,10 +577,8 @@ a {
   width: 20%;
   gap: 30px;
   padding: 10px;
-  height: 80%;
   justify-content: space-between;
   background-color: white;
-  height: 100vh;
 }
 .side-bar-btn-x {
   display: flex;
@@ -770,6 +768,7 @@ form button {
 }
 
 .login-loading span {
+ 
   height: 100%;
   background-color: blueviolet;
   width: 20%;
@@ -785,17 +784,12 @@ form button {
     margin-left: 0px;
   }
   to {
-    margin-left: 90%;
+    margin-left: 80%;
   }
 }
 
 /* Extra small devices (phones, less than 576px) */
 @media (max-width: 575.98px) {
-  body {
-    /* border: solid red; */
-  }
-
-
   .home-main {
     display: flex;
     flex-direction: column;
@@ -897,7 +891,8 @@ form button {
     margin-top: 5px;
   }
 
-  .sign-up-x, .login-x {
+  .sign-up-x,
+  .login-x {
     width: 100%;
     flex-direction: column;
     padding: 10px;
@@ -905,45 +900,141 @@ form button {
     background-position:
       -80px 550px,
       250px 10px;
-      
   }
 
   .sign-up,
   .login {
-   width: 100%;
-   padding: 10px 10px;
-
+    width: 100%;
+    padding: 10px 10px;
   }
-
-  .sign-up-hero-x,.login-hero-x{
-   
+.login-main{
+  padding-bottom: 50px;
+ 
+}
+  .sign-up-hero-x,
+  .login-hero-x {
     align-items: center;
     width: 100%;
     border-right: none;
     border-bottom: solid 1px #8a2be2;
   }
 
-.sign-up-x p{
-   text-align: center;
-  
+  .sign-up-x p {
+    text-align: center;
+  }
+
+  .sign-up-form,
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+  .cancel-btn {
+    position: absolute;
+    border: none;
+    top: 20px;
+    right: 10px;
+  }
+
+  .side-bar-content-x {
+    flex-direction: column-reverse;
+    padding: 0;
+    width: 100%;
+  }
+
+  .side-bar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 30px;
+    padding: 10px;
+    justify-content: space-between;
+    background-color: white;
+  }
+  .side-bar-btn-x {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding: 2px;
+    place-content: center;
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    z-index: 1000;
+    background-color: white;
+  }
+
+  .side-bar button {
+    display: flex;
+    align-items: center;
+    place-content: center;
+    background-color: white;
+    text-indent: -9999px;
+    width: 40%;
+    border-radius: 5px;
+  }
+  .side-bar button svg {
+    width: 100%;
+    accent-color: blueviolet;
+  }
+  .side-bar svg {
+    height: 23px;
+  }
+.add-task-btn{
+  position: fixed;
+  /* position: -webkit-sticky; */
+  bottom: 70px;
+  z-index: 1000;
+  right: 0px;
+  box-shadow: 0px 0px 9px 1px rgb(207, 206, 206);
+
 }
 
-.sign-up-form,
-.login-form {
+.taskmaster-form-x {
+ 
+  width: 100%;
+  position: absolute;
+  right: 0px;
+  top: 80px;
+  background-color: white;
+  gap: 20px;
+  left: 0px;
+  background-size: 400px 350px;
+  background-position: 400px 250px;
+}
+
+.taskmaster-form-x form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 10px;
-  padding-bottom: 10px;
+  border-radius: 5px;
+  padding: 15px;
+  /* position: relative; */
+  gap: 15px;
 }
-.cancel-btn {
-  position: absolute;
-  border: none;
-  top: 20px;
-  right: 10px;
-  
+.tool-bar{
+  margin-top: 0px;
+}
+.user-image-x{
+  width: 100%;
+  justify-content: flex-end;
+  height: 80%;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  padding: 0 10px;
+ 
+}
+.first-letter{
+  width: 10vw;
+  height: 10vw;
 }
 
+.search-add-btn-x{
+  display: none;
+}
   .mobi {
     display: none;
   }
@@ -968,14 +1059,14 @@ form button {
 /* Small devices (tablets, 576px and up) */
 @media (min-width: 576px) and (max-width: 767.98px) {
   body {
-    border: solid green;
+    /* border: solid green; */
   }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
   body {
-    border: solid blue;
+    /* border: solid blue; */
   }
   .non-mobi {
     display: none;
@@ -985,7 +1076,7 @@ form button {
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   body {
-    border: solid yellow;
+    /* border: solid yellow; */
   }
   .non-mobi {
     display: none;

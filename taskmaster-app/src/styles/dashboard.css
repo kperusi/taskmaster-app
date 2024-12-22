@@ -63,7 +63,7 @@
     justify-content: space-between;
     align-items: center;
 }
-.recent-r-1 hr{
+.recent-r-1 hr {
     height: 15px;
 }
 .r-duedate {
@@ -82,27 +82,26 @@
     border-radius: 3px;
     width: fit-content;
     text-align: center;
-  }
-  .medium {
+}
+.medium {
     background-color: rgb(190, 157, 243);
     color: rgb(71, 12, 167);
     /* padding: 3px; */
     border-radius: 3px;
     width: fit-content;
     text-align: center;
-  }
-  .low {
-    background-color: rgb(160, 95, 140);
+}
+ .low {
+    background-color: rgb(48, 194, 79);
     color: white;
-    /* padding: 3px 10px; */
     border-radius: 3px;
     width: fit-content;
     text-align: center;
-  }
+} 
 .subtask-render-x {
     display: flex;
     flex-direction: row !important;
-   align-items: center;
+    align-items: center;
 }
 
 .subtask-render-x input {
@@ -111,12 +110,71 @@
 .subtask-render-x span {
     width: 5%;
 }
-.upcoming-task{
+.upcoming-task {
     display: flex;
     flex-direction: column;
     /* height: 350px; */
     width: 50%;
-    padding:  10px;
+    padding: 10px;
     gap: 10px;
     background-color: aliceblue;
+}
+.upcoming-task-2 {
+    width: 50%;
+    height: 100vh;
+}
+
+@media (max-width: 575.98px) {
+    .dashboard-main {
+        /* border: solid; */
+        width: 100%;
+        padding: 0px;
+    }
+    .dashboard-top-x {
+        width: 100%;
+    }
+    .dashboard-name{
+        width: 100%;
+    }
+    .card-x {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        place-content: center;
+    }
+
+    .card-x div {
+        width: 45%;
+    }
+    .recent-upcoming-x {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        gap: 20px;
+        background-color: rgb(232, 231, 233);
+        border-radius: 5px;
+    }
+    .recent-task {
+        width: 100%;
+        font-size: 0.8em;
+    }
+    .recent-r-1 p {
+        font-size: 0.8em;
+    }
+    .upcoming-task {
+        /* display: none; */
+        align-items: center;
+        width: 100%;
+        height: 300px;
+        /* padding-bottom: 60px; */
+    }
+    .upcoming-task-2 {
+        width: 100%;
+        height: 300px;
+        padding-bottom: 60px;
+    }
+}
+.upcoming-task-2 h3 {
+    width: 100%;
+    margin-bottom: 20px;
 }
