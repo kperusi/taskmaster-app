@@ -175,3 +175,7 @@ label {
   color: rgb(252, 98, 98);
 }
 
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+  
+}

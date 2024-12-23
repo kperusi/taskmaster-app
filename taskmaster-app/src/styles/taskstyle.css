@@ -103,3 +103,11 @@
 .completed-circle {
   background-color: rgb(243, 25, 152);
 }
+@media (max-width: 575.98px) {
+  
+  .task-main-container{
+    width: 100%;
+    border: solid red;
+    gap: 3px;
+  }
+}
