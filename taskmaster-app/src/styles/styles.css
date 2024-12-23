@@ -751,6 +751,9 @@ form button {
   font-size: 1em;
   color: gray;
 }
+.mobi-add-task-btn {
+  display: none;
+}
 .login-section-rw-2 {
   display: flex;
   flex-direction: row;
@@ -768,7 +771,6 @@ form button {
 }
 
 .login-loading span {
- 
   height: 100%;
   background-color: blueviolet;
   width: 20%;
@@ -907,10 +909,9 @@ form button {
     width: 100%;
     padding: 10px 10px;
   }
-.login-main{
-  padding-bottom: 50px;
- 
-}
+  .login-main {
+    padding-bottom: 50px;
+  }
   .sign-up-hero-x,
   .login-hero-x {
     align-items: center;
@@ -983,58 +984,69 @@ form button {
   .side-bar svg {
     height: 23px;
   }
-.add-task-btn{
-  position: fixed;
-  /* position: -webkit-sticky; */
-  bottom: 70px;
-  z-index: 1000;
-  right: 0px;
-  box-shadow: 0px 0px 9px 1px rgb(207, 206, 206);
+  .mobi-add-task-btn {
+    height: 40px;
+    background-color: blueviolet;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
 
-}
+    display: flex;
+    position: fixed;
+    bottom: 70px;
+    z-index: 1000;
+    right: 0px;
+    box-shadow: 0px 0px 9px 1px rgb(223, 222, 222);
+    align-items: center;
+  }
 
-.taskmaster-form-x {
- 
-  width: 100%;
-  position: absolute;
-  right: 0px;
-  top: 80px;
-  background-color: white;
-  gap: 20px;
-  left: 0px;
-  background-size: 400px 350px;
-  background-position: 400px 250px;
-}
+  .taskmaster-form-x {
+    width: 100%;
+    position: absolute;
+    right: 0px;
+    top: 80px;
+    background-color: white;
+    gap: 20px;
+    left: 0px;
+    background-size: 400px 350px;
+    background-position: 400px 250px;
+  }
 
-.taskmaster-form-x form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  border-radius: 5px;
-  padding: 15px;
-  /* position: relative; */
-  gap: 15px;
-}
-.tool-bar{
-  margin-top: 0px;
-}
-.user-image-x{
-  width: 100%;
-  justify-content: flex-end;
-  height: 80%;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  padding: 0 10px;
- 
-}
-.first-letter{
-  width: 10vw;
-  height: 10vw;
-}
+  .taskmaster-form-x form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 5px;
+    padding: 15px;
+    /* position: relative; */
+    gap: 15px;
+  }
+  .tool-bar {
+    margin-top: 0px;
+  }
+  .user-image-x {
+    width: 100%;
+    justify-content: flex-end;
+    height: 80%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 0 10px;
+    align-items: center;
+    align-content: center;
+   
+  }
+  .first-letter {
+    width: 10vw;
+    height: 10vw;
+  }
 
-.search-add-btn-x{
-  display: none;
-}
+  .search-add-btn-x {
+    display: none;
+  }
+  .username {
+    display: none;
+  }
   .mobi {
     display: none;
   }

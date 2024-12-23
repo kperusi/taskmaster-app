@@ -271,7 +271,18 @@ export default function UserPage() {
             </svg>
           </button>
         </div>
-
+        <button class="mobi-add-task-btn" onClick={showAddTaskFormHandler}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="20px"
+            viewBox="0 -960 960 960"
+            width="20px"
+            fill="#ffffff"
+          >
+            <path d="M446.67-446.67H200v-66.66h246.67V-760h66.66v246.67H760v66.66H513.33V-200h-66.66v-246.67Z" />
+          </svg>{" "}
+          New task
+        </button>
         <div class={`setting ${showSetting}`}>
           <h4>Settings</h4>
           <ul>
@@ -508,9 +519,8 @@ export default function UserPage() {
             </svg>
           </div> */}
         </aside>
-     
-          <Outlet />
-      
+
+        <Outlet />
       </section>
     </main>
   );
