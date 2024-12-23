@@ -24,6 +24,7 @@ export default function DashboardPage() {
   const [todayTasks, setTodayTasks] = useState([]);
   const [taskInProgress, setTaskInProgress] = useState([]);
   const [currentTimeOfDay, setCurrentTimeOfDay] = useState();
+  const [today, setToday]=useState()
 
   const taskProgressData = [
     { name: "Mon", completed: 5 },
@@ -39,6 +40,16 @@ export default function DashboardPage() {
 
   console.log(JSON.parse(localStorage.getItem("tasks")));
 
+  const customeDate=()=>{
+    let date = new Date(Date.now()).toDateString()
+    let today = date.split(' ')[0]
+    let month = date.split(' ')[1]
+    let number= date.split(' ')[2]
+    let year= date.split(' ')[3]
+   setToday(`${today}, ${month} ${number}, ${year}`)
+   console.log(date.split(' '))
+  }
+
   const currentHour = function () {
     let date = new Date();
     let hours = date.getHours();
@@ -53,6 +64,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     currentHour();
+    customeDate()
   }, []);
 
   const formatDate = function (date, format = "default") {
@@ -123,6 +135,7 @@ export default function DashboardPage() {
                 Hi!  {user.firstname} {user.lastname}
               </h1>
               <h3 className="dashboard-salutation">{currentTimeOfDay}</h3>
+              <p>{today}</p>
             </div>
           </div>
           <div className="card-x">

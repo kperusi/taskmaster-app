@@ -212,13 +212,10 @@ export default function UserPage() {
     }
   };
   const handleShowSetting = () => {
-
-    if(showSetting==='show') {
-      setShowSettig('')
-    }
-    else{
+    if (showSetting === "show") {
+      setShowSettig("");
+    } else {
       setShowSettig("show");
-
     }
   };
 
@@ -291,8 +288,8 @@ export default function UserPage() {
           New task
         </button>
         <div class={`setting ${showSetting}`}>
-          <div  className="setting-title">
-          <h4>Settings </h4>
+          <div className="setting-title">
+            <h4>Settings </h4>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="40px"
@@ -313,9 +310,21 @@ export default function UserPage() {
               <button>Account</button>
             </li>
             <li>
-              <button className="logout" onClick={logout}>
-                Logout
-              </button>
+              <hr/>
+              <div className="logout-x">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="28"
+                  viewBox="0 -960 960 960"
+                  width="28"
+                >
+                  <path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h299v60H180v600h299v60H180Zm486-185-43-43 102-102H360v-60h363L621-612l43-43 176 176-174 174Z" />
+                </svg>
+
+                <button style={{color:'red'}} className="logout" onClick={logout}>
+                  LogOut
+                </button>
+              </div>
             </li>
           </ul>
           <p>{user.email}</p>

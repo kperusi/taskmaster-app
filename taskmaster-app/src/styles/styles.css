@@ -461,6 +461,7 @@ form button {
 .username {
   font-size: 0.8em;
 }
+
 .open-setting-btn {
   background-color: blueviolet !important;
   border: none;
@@ -505,7 +506,6 @@ form button {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   padding: 5px;
-  background-color: rgb(218, 188, 247);
 }
 .setting svg:hover{
   cursor: pointer;
@@ -531,6 +531,11 @@ a {
   width: 100%;
   color: white;
 }
+.logout-x{
+  display: flex;
+  align-items: center;
+}
+
 .search-add-btn-x {
   background-color: white;
   display: flex;
