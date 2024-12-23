@@ -103,6 +103,9 @@
 .completed-circle {
   background-color: rgb(243, 25, 152);
 }
+.task-mobi-view{
+  display: none;
+}
 @media (max-width: 575.98px) {
   
   .task-main-container{
@@ -110,4 +113,37 @@
     /* border: solid red; */
     gap: 3px;
   }
+
+  .task-main-container section{
+    display: none;
+  }
+.task-mobi-view{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.task-mobi-nav{
+  display: flex;
+}
+
+  .circle-title-x h1{
+    font-size: 0.9em;
+    padding: 5px;
+    gap: 2px;
+  }
+.todo-selected, .doing-selected,.done-selected{
+  background-color: blueviolet;
+  color: white;
+}
+.mobi-tasks-x{
+  display: flex;
+ width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(216, 216, 216);
+}
+
+/* .doing-selected{
+  background-color: white;
+} */
 }
