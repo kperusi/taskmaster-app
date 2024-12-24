@@ -334,4 +334,40 @@ router.delete('/tasks/:taskId', async (req, res) => {
   }
 });
 
+// Refresh token endpoint
+router.post("/refresh-token", (req, res) => {
+  const oldToken = req.body.token;
+
+  try {
+    // Verify the old token
+    const decoded = jwt.verify(oldToken, process.env.JWT_SECRET || "your_jwt_secret");
+
+    // Create a new token
+    const payload = {
+      user: {
+        id: decoded.user.id,
+      },
+    };
+
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET || "your_jwt_secret",
+      { expiresIn: "3h" },
+      (err, newToken) => {
+        if (err) throw err;
+        res.status(200).json({
+          message: "Token refreshed successfully",
+          token: newToken,
+        });
+      }
+    );
+  } catch (error) {
+    console.error(error);
+    res.status(401).json({ message: "Invalid or expired token" });
+  }
+});
+
+
+
+
 module.exports = router;

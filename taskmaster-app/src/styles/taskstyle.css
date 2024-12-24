@@ -124,6 +124,9 @@
 }
 .task-mobi-nav{
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+
 }
 
   .circle-title-x h1{

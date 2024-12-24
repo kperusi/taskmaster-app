@@ -26,8 +26,8 @@ export default function UserPage() {
   });
   const [svgColor, setSvgColor] = useState({
     dashboardColor: "white",
-    taskColor: "grey",
-    calenderColor: "grey",
+    taskColor: "blueviolet",
+    calenderColor: "blueviolet",
   });
   const dispatch = useDispatch();
 
@@ -35,6 +35,9 @@ export default function UserPage() {
     setUser(JSON.parse(localStorage.getItem("userData")));
   }, []);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+  }, []);
   useEffect(() => {
     if (!user) {
       setLetter("");
@@ -186,16 +189,16 @@ export default function UserPage() {
       });
       setSvgColor({
         dashboardColor: "white",
-        taskColor: "grey",
-        calenderColor: "grey",
+        taskColor: "blueviolet",
+        calenderColor: "blueviolet",
       });
     }
     if (item === "tasks") {
       setSelectedItem({ dashboard: "", task: "task-selected", calender: "" });
       setSvgColor({
-        dashboardColor: "grey",
+        dashboardColor: "blueviolet",
         taskColor: "white",
-        calenderColor: "grey",
+        calenderColor: "blueviolet",
       });
     }
     if (item === "calender") {
@@ -205,8 +208,8 @@ export default function UserPage() {
         calender: "calender-selected",
       });
       setSvgColor({
-        dashboardColor: "grey",
-        taskColor: "grey",
+        dashboardColor: "blueviolet",
+        taskColor: "blueviolet",
         calenderColor: "white",
       });
     }
@@ -222,6 +225,23 @@ export default function UserPage() {
   async function logout() {
     try {
       const token = localStorage.getItem("token");
+
+      try {
+        const response = await fetch("https://taskmaster-apps.onrender.com/refresh-token", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: token }),
+        });
+        const data = await response.json();
+        if (response.ok) {
+          localStorage.setItem("token", data.token);
+          console.log("Token refreshed successfully:", data.token);
+        } else {
+          console.error("Failed to refresh token:", data.message);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
 
       const response = await fetch(
         "https://taskmaster-apps.onrender.com/logout",
@@ -246,10 +266,12 @@ export default function UserPage() {
         setShowSettig("");
         navigate("/");
       } else {
+        navigate("taskmaster/login");
         throw new Error(data.message || "Logout failed");
       }
     } catch (error) {
       console.error("Logout error:", error);
+      navigate("/taskmaster/login");
       // Handle error (show error message to user)
     }
   }
@@ -310,7 +332,7 @@ export default function UserPage() {
               <button>Account</button>
             </li>
             <li>
-              <hr/>
+              <hr />
               <div className="logout-x">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -321,7 +343,11 @@ export default function UserPage() {
                   <path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h299v60H180v600h299v60H180Zm486-185-43-43 102-102H360v-60h363L621-612l43-43 176 176-174 174Z" />
                 </svg>
 
-                <button style={{color:'red'}} className="logout" onClick={logout}>
+                <button
+                  style={{ color: "red" }}
+                  className="logout"
+                  onClick={logout}
+                >
                   LogOut
                 </button>
               </div>
@@ -481,7 +507,7 @@ export default function UserPage() {
                 height="24px"
                 viewBox="0 -960 960 960"
                 width="24px"
-                fill={`${svgColor}`}
+                fill={`blueviolet`}
               >
                 <path d="M480-512ZM160-160v-391.67l-80 61-39.67-53 439.67-337L920-544l-40 53.33-400-306-253.33 194v376h168V-160H160Zm446.33 80L446.67-240l46.66-47.67 113 113.67 227-226L880-353 606.33-80Z" />
               </svg>
