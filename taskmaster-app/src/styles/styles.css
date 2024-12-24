@@ -485,8 +485,8 @@ form button {
   flex-direction: column;
   /* justify-items: center; */
 }
-.setting-title{
-  background-color: rgb(218, 188, 247); ;
+.setting-title {
+  background-color: rgb(218, 188, 247);
   display: flex;
   align-items: center;
   padding: 0 10px;
@@ -502,12 +502,12 @@ form button {
 .setting p {
   font-size: 0.8em;
 }
-.setting svg{
+.setting svg {
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   padding: 5px;
 }
-.setting svg:hover{
+.setting svg:hover {
   cursor: pointer;
   padding: 2px;
   background-color: rgb(218, 188, 247);
@@ -531,7 +531,7 @@ a {
   width: 100%;
   color: white;
 }
-.logout-x{
+.logout-x {
   display: flex;
   align-items: center;
 }
@@ -615,7 +615,6 @@ a {
 .user-page-x {
   display: flex;
   flex-direction: column;
-
 }
 
 .side-bar button:hover {
@@ -724,6 +723,9 @@ form button {
   border-radius: 10px;
   padding: 20px;
 }
+.dashboard-logo-x {
+  display: none;
+}
 .card {
   width: 60%;
   height: 150px;
@@ -815,7 +817,6 @@ form button {
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    
   }
 
   .home-tool-bar-x {
@@ -1047,16 +1048,30 @@ form button {
     align-items: normal;
     padding-bottom: 0px;
     height: fit-content;
+    background-color: blueviolet;
+    color: white;
+    width: 100%;
+  }
+  .dashboard-logo-x {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.6em;
+    width: 70%;
+    padding: 10px;
+    
+  }
+  .dashboard-logo-x p {
+    font-family: "PlaywriteHRLijeva-VariableFont_wght";
+    font-weight: 800;
+    margin-top: -5px;
   }
   .user-image-x {
-    width: 100%;
+    width: 30%;
     justify-content: flex-end;
     height: 80%;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
     padding: 20px 10px;
-
-   
   }
   .first-letter {
     width: 10vw;
@@ -1069,12 +1084,11 @@ form button {
   .username {
     display: none;
   }
+
   .open-setting-btn {
-  
     padding: 0px;
-   
   }
-  .setting{
+  .setting {
     left: 100px;
     padding: 10px;
   }

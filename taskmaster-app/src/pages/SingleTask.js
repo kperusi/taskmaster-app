@@ -67,10 +67,7 @@ export default function SingleTask() {
   async function fetchSingleTask() {
     try {
       const token = localStorage.getItem("token"); // Get stored token
-      if(!token) {
-        navigate("/taskmaster/login");
-        return;
-      }
+    
 
       console.log(">>", token);
 
@@ -102,6 +99,7 @@ export default function SingleTask() {
         setDueDate(data.task.dueDate);
         setPriority(data.task.priority);
         setLoading(false);
+       
       }
     } catch (error) {
       console.error("Error fetching tasks:", error);
@@ -113,10 +111,7 @@ export default function SingleTask() {
     try {
       const token = localStorage.getItem("token"); // Get stored token
       console.log(token);
-      if(!token) {
-        navigate("taskmaster/login");
-        return;
-      }
+     
 
       const response = await fetch(
         "https://taskmaster-apps.onrender.com/tasks",
@@ -148,11 +143,8 @@ export default function SingleTask() {
 
   useEffect(() => {
     fetchSingleTask();
-    // setTitle(singleTask?.title);
-    // setDescription(singleTask?.description);
-    // setDueDate(singleTask?.dueDate);
     console.log("setting subtasks");
-    // setSubtasks(singleTask?.subtasks);
+
   }, []);
 
   const handleFormVisibility = () => {
@@ -184,7 +176,8 @@ export default function SingleTask() {
   const handleSubtaskComplete = (e, index) => {
     subtasks[index].completed = e.target.checked;
     console.log(e.target.checked);
-    console.log(">>", subtasks);
+    setsubtaskCompleted(e.target.checked)
+    console.log(">>",index, subtasks[index].completed);
   };
 
   async function handleEditSubmit(e) {
@@ -311,7 +304,7 @@ fetchUserTasks()
   // console.log(dueDate?.split("T")[0])
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="single-task-loading">Loading...</div>;
   }
 
   return (
@@ -502,8 +495,10 @@ fetchUserTasks()
               <div className="edit-subtask" key={subtask._id}>
                 <input
                   type="checkbox"
+                 
+                  // checked={subtasks[i].completed}
+                  // value={subtasks[i].completed}
                   onChange={(e) => handleSubtaskComplete(e, i)}
-                  checked={subtasks[i].completed}
                 />
                 <input
                   className="edit-subtask-title"

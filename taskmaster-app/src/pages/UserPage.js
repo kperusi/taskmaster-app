@@ -36,9 +36,6 @@ export default function UserPage() {
   }, []);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-  }, []);
-  useEffect(() => {
     if (!user) {
       setLetter("");
     } else setLetter(user.firstname?.toUpperCase()[0]);
@@ -56,6 +53,25 @@ export default function UserPage() {
     try {
       const token = localStorage.getItem("token"); // Get stored token
       console.log(token);
+      try {
+        const response = await fetch(
+          "https://taskmaster-apps.onrender.com/refresh-token",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ token: token }),
+          }
+        );
+        const data = await response.json();
+        if (response.ok) {
+          localStorage.setItem("token", data.token);
+          console.log("Token refreshed successfully:", data.token);
+        } else {
+          console.error("Failed to refresh token:", data.message);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
 
       const response = await fetch(
         "https://taskmaster-apps.onrender.com/tasks",
@@ -77,13 +93,8 @@ export default function UserPage() {
 
       // Handle successful response
       if (data.success) {
-        //   displayTasks(data.tasks);
         localStorage.setItem("tasks", JSON.stringify(data.tasks));
         dispatch(setStoreTasks(data.tasks));
-
-        // setTasks(data?.tasks);
-        // console.log(data.count);
-        // console.log(user?._id);
       }
     } catch (error) {
       console.error("Error fetching tasks:", error);
@@ -227,11 +238,14 @@ export default function UserPage() {
       const token = localStorage.getItem("token");
 
       try {
-        const response = await fetch("https://taskmaster-apps.onrender.com/refresh-token", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ token: token }),
-        });
+        const response = await fetch(
+          "https://taskmaster-apps.onrender.com/refresh-token",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ token: token }),
+          }
+        );
         const data = await response.json();
         if (response.ok) {
           localStorage.setItem("token", data.token);
@@ -266,12 +280,11 @@ export default function UserPage() {
         setShowSettig("");
         navigate("/");
       } else {
-        navigate("taskmaster/login");
         throw new Error(data.message || "Logout failed");
       }
     } catch (error) {
       console.error("Logout error:", error);
-      navigate("/taskmaster/login");
+
       // Handle error (show error message to user)
     }
   }
@@ -279,6 +292,11 @@ export default function UserPage() {
   return (
     <main className="user-page-x">
       <section className="tool-bar">
+        <div className="dashboard-logo-x">
+          <h1 className="dashboard-logo">TASKMASTER</h1>
+          <p>...Orgainizing your day</p>
+        </div>
+
         <div className="user-image-x">
           <h1 className="first-letter">{letter}</h1>
 
