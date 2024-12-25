@@ -5,7 +5,7 @@ export const taskSlice = createSlice({
     tasks: [],
     singleTask:[],
     isLoading: false,
-    showSelection:'',
+    showAddMobiTaskBtn:'show',
     error: null,
   },
   reducers: {
@@ -36,11 +36,11 @@ export const taskSlice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
-    setShowSelection: (state, action) =>{
-      state.showSelection = action.payload;
+    setShowMobiTaskBtn: (state, action) =>{
+      state.showAddMobiTaskBtn = action.payload;
     }
   },
 });
 
-export const { setStoreTasks, setLoading, setError,setShowSelection } = taskSlice.actions;
+export const { setStoreTasks, setLoading, setError,setShowMobiTaskBtn } = taskSlice.actions;
 export default taskSlice.reducer;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import "../styles/styles.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setShowSelection, setStoreTasks } from "../store/taskSlice";
+import { setShowMobiTaskBtn, setStoreTasks } from "../store/taskSlice";
 
 export default function UserPage() {
   const navigate = useNavigate();
@@ -17,15 +17,18 @@ export default function UserPage() {
   const [priority, setPriority] = useState("medium");
   const [dueDate, setDueDate] = useState("");
   const [showSetting, setShowSettig] = useState("");
+  const [currentSeletedItem, setCurrentSeletedItem] = useState("");
   const { params } = useParams();
-  const location = useLocation();
+  const mobiTaskBtn = useSelector((state) => state.tasks.showAddMobiTaskBtn);
+
+  console.log(currentSeletedItem);
   const [selectedItem, setSelectedItem] = useState({
-    dashboard: "dashboard-selected",
+    dashboard: "",
     task: "",
     calender: "",
   });
   const [svgColor, setSvgColor] = useState({
-    dashboardColor: "white",
+    dashboardColor: "blueviolet",
     taskColor: "blueviolet",
     calenderColor: "blueviolet",
   });
@@ -33,6 +36,40 @@ export default function UserPage() {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("userData")));
+
+    if (window.location.pathname.endsWith("tasks")) {
+      setSelectedItem({ dashboard:'', task: "task-selected",calender:'' });
+      setSvgColor({
+        dashboardColor: "blueviolet",
+        taskColor: "white",
+        calenderColor: "blueviolet",
+      });
+    }
+   if(window.location.pathname.endsWith("calender")){
+    console.log("calender")
+    setSelectedItem({
+      dashboard: "",
+      task: "",
+      calender: "calender-selected",
+    });
+      setSvgColor({
+        dashboardColor: "blueviolet",
+        taskColor: "blueviolet",
+        calenderColor: "white",
+      });
+    }
+
+    if(window.location.pathname.endsWith("dashboard")){
+      console.log("calender")
+        setSelectedItem({ dashboard:'dashboard-selected',task:'', calender: "" });
+        setSvgColor({
+          dashboardColor: "white",
+          taskColor: "blueviolet",
+          calenderColor: "blueviolet",
+        });
+      }
+
+
   }, []);
 
   useEffect(() => {
@@ -41,7 +78,6 @@ export default function UserPage() {
     } else setLetter(user.firstname?.toUpperCase()[0]);
   }, [user]);
 
-  // console.log(user._id);
   const showAddTaskFormHandler = (e) => {
     e.preventDefault();
     if (showAddTask === "show") {
@@ -188,10 +224,10 @@ export default function UserPage() {
     navigate(route);
   };
   const handleClick = (item, e) => {
-    dispatch(setShowSelection(item));
+    // dispatch(setShowSelection(item));
+    dispatch(setShowMobiTaskBtn("show"));
     handleNavigate(item);
-
-    console.log(item);
+    setCurrentSeletedItem(item);
     if (item === "dashboard") {
       setSelectedItem({
         dashboard: "dashboard-selected",
@@ -315,7 +351,10 @@ export default function UserPage() {
             </svg>
           </button>
         </div>
-        <button class="mobi-add-task-btn" onClick={showAddTaskFormHandler}>
+        <button
+          class={`mobi-add-task-btn ${mobiTaskBtn}`}
+          onClick={showAddTaskFormHandler}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="20px"
@@ -564,7 +603,7 @@ export default function UserPage() {
               Tasks
             </button>
             <button
-              className="side-bar-calender-btn"
+              className={`side-bar-calender-btn ${selectedItem.calender}`}
               onClick={() => handleClick("calender")}
             >
               <svg

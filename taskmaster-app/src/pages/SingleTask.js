@@ -23,8 +23,10 @@ export default function SingleTask() {
   const [subtasks, setSubtasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const tasks = useSelector((state) => state.tasks.tasks);
+  const mobiTaskBtn = useSelector((state)=>state.tasks.showAddMobiTaskBtn)
 
   // const {tasks}=useOutletContext()
+  console.log(mobiTaskBtn)
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("userData")));

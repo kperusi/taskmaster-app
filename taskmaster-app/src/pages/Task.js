@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import "../styles/taskstyle.css";
 
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { setShowMobiTaskBtn } from "../store/taskSlice";
 
 export default function Task() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   // const [tasks, setTasks] = useState([]);
   const [user, setUser] = useState({});
   const [todoTask, setTodoTask] = useState([]);
@@ -37,7 +39,12 @@ export default function Task() {
   const tasks =
     useSelector((state) => state.tasks.tasks) ||
     JSON.parse(localStorage.getItem("tasks"));
-  console.log(tasks);
+  // console.log(tasks);
+
+
+
+
+
 
   const formatDate = function (date, format = "default") {
     const parsedDate = new Date(date.split("T")[0]);
@@ -102,6 +109,7 @@ export default function Task() {
 
   const handleNavigate = (path) => {
     navigate(path);
+    dispatch(setShowMobiTaskBtn('hidden'))
   };
 
   const calculateProgress = (task) => {
@@ -111,7 +119,6 @@ export default function Task() {
         100
     );
   };
-  console.log(selectedItem);
   return (
     <main className="task-main-container">
       <section>
