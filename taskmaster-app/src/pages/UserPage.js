@@ -23,12 +23,12 @@ export default function UserPage() {
 
   console.log(currentSeletedItem);
   const [selectedItem, setSelectedItem] = useState({
-    dashboard: "",
+    dashboard: "dashboard-selected",
     task: "",
     calender: "",
   });
   const [svgColor, setSvgColor] = useState({
-    dashboardColor: "blueviolet",
+    dashboardColor: "white",
     taskColor: "blueviolet",
     calenderColor: "blueviolet",
   });

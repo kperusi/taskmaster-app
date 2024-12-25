@@ -126,6 +126,7 @@ export default function Task() {
           <span className="todo-circle circle"></span>
           <h1>{`TODO (${todoTask.length})`}</h1>
         </div>
+        {/* {todoTask.length===0 && (<div>No todo task</div>)} */}
 
         {todoTask.map((task) => (
           <div
@@ -200,6 +201,7 @@ export default function Task() {
           <span className="in-progress-circle circle"></span>
           <h1>{`DOING (${taskInProgress.length})`}</h1>
         </div>
+        
         {taskInProgress.map((task) => (
           <div
             key={task._id}
@@ -400,6 +402,7 @@ export default function Task() {
 
         {selectedItem.todo && (
           <div className={`mobi-tasks-x`}>
+             {/* {todoTask.length===0 && (<div>No todo task</div>)} */}
             {todoTask.map((task) => (
               <div
                 key={task._id}
