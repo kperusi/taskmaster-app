@@ -1429,7 +1429,7 @@ form button {
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
   body {
-    border: solid blue;
+    /* border: solid blue; */
   }
   .non-mobi {
     display: none;
@@ -1439,7 +1439,7 @@ form button {
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   body {
-    border: solid yellow;
+    /* border: solid yellow; */
   }
   .non-mobi {
     display: none;
@@ -1449,7 +1449,7 @@ form button {
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
   body {
-    border: solid lightcoral;
+    /* border: solid lightcoral; */
   }
   .non-mobi {
     display: none;
