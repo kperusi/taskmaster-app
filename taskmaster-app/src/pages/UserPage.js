@@ -38,20 +38,20 @@ export default function UserPage() {
     setUser(JSON.parse(localStorage.getItem("userData")));
 
     if (window.location.pathname.endsWith("tasks")) {
-      setSelectedItem({ dashboard:'', task: "task-selected",calender:'' });
+      setSelectedItem({ dashboard: "", task: "task-selected", calender: "" });
       setSvgColor({
         dashboardColor: "blueviolet",
         taskColor: "white",
         calenderColor: "blueviolet",
       });
     }
-   if(window.location.pathname.endsWith("calender")){
-    console.log("calender")
-    setSelectedItem({
-      dashboard: "",
-      task: "",
-      calender: "calender-selected",
-    });
+    if (window.location.pathname.endsWith("calender")) {
+      console.log("calender");
+      setSelectedItem({
+        dashboard: "",
+        task: "",
+        calender: "calender-selected",
+      });
       setSvgColor({
         dashboardColor: "blueviolet",
         taskColor: "blueviolet",
@@ -59,17 +59,19 @@ export default function UserPage() {
       });
     }
 
-    if(window.location.pathname.endsWith("dashboard")){
-      console.log("calender")
-        setSelectedItem({ dashboard:'dashboard-selected',task:'', calender: "" });
-        setSvgColor({
-          dashboardColor: "white",
-          taskColor: "blueviolet",
-          calenderColor: "blueviolet",
-        });
-      }
-
-
+    if (window.location.pathname.endsWith("dashboard")) {
+      console.log("calender");
+      setSelectedItem({
+        dashboard: "dashboard-selected",
+        task: "",
+        calender: "",
+      });
+      setSvgColor({
+        dashboardColor: "white",
+        taskColor: "blueviolet",
+        calenderColor: "blueviolet",
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -444,7 +446,9 @@ export default function UserPage() {
           >
             <h1>Add New Task</h1>
             <div>
-              <label htmlFor="task-title">Title</label>
+              <label htmlFor="task-title" style={{ color: "black" }}>
+                Title
+              </label>
               <input
                 type="text"
                 className="task-title"
@@ -455,7 +459,9 @@ export default function UserPage() {
               />
             </div>
             <div>
-              <label htmlFor="task-description">Description</label>
+              <label htmlFor="task-description" style={{ color: "black" }}>
+                Description
+              </label>
               {/* <!-- <input type="text" class="task-description" id="task-description" name="task-description" required > --> */}
               <textarea
                 className="task-description"
@@ -465,7 +471,9 @@ export default function UserPage() {
                 onChange={(e) => setDescription(e.target.value)}
               ></textarea>
             </div>
-            <label htmlFor="subtask">Subtasks</label>
+            <label htmlFor="subtask" style={{ color: "black" }}>
+              Subtasks
+            </label>
             {/* <!-- subtask input --> */}
             <div className="add-task-subtask" id="sub-task-x">
               {subtasks?.map((subtask, i) => (
@@ -501,7 +509,9 @@ export default function UserPage() {
 
             <div class="status-priority-x">
               <div class="task-input-status-x">
-                <label for="status">Status</label>
+                <label for="status" style={{ color: "black" }}>
+                  Status
+                </label>
                 <select
                   name="task-input-status"
                   class="task-input-status"
@@ -515,7 +525,9 @@ export default function UserPage() {
               </div>
 
               <div class="task-input-status-x">
-                <label for="status">Priority</label>
+                <label for="status" style={{ color: "black" }}>
+                  Priority
+                </label>
                 <select
                   name="task-input-status"
                   class="task-input-status"
@@ -530,7 +542,7 @@ export default function UserPage() {
                 </select>
               </div>
             </div>
-
+            <label style={{ color: "black" }}>Due Date</label>
             <input
               type="date"
               name="duedate"

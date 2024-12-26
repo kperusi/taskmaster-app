@@ -103,98 +103,93 @@
 .completed-circle {
   background-color: rgb(243, 25, 152);
 }
-.task-mobi-view{
+.task-mobi-view {
   display: none;
 }
 @media (max-width: 575.98px) {
-  
-  .task-main-container{
+  .task-main-container {
     width: 100%;
     /* border: solid red; */
     /* gap: 3px; */
   }
 
-  .task-main-container section{
+  .task-main-container section {
     display: none;
   }
-.task-mobi-view{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 0px 10px;
-}
-.task-mobi-nav{
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+  .task-mobi-view {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px 10px;
+  }
+  .task-mobi-nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
 
-
-
-}
-
-  .circle-title-x h1{
+  .circle-title-x h1 {
     font-size: 0.9em;
     padding: 5px;
     gap: 2px;
   }
-.todo-selected, .doing-selected,.done-selected{
-  background-color: blueviolet;
-  color: white;
-}
-.mobi-tasks-x{
-  display: flex;
- width: 100%;
-  flex-direction: column;
-  gap: 10px;
-  background-color: rgb(216, 216, 216);
-}
+  .todo-selected,
+  .doing-selected,
+  .done-selected {
+    background-color: blueviolet;
+    color: white;
+  }
+  .mobi-tasks-x {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(216, 216, 216);
+  }
 
-/* .doing-selected{
+  /* .doing-selected{
   background-color: white;
 } */
 }
 
-
 @media (min-width: 576px) and (max-width: 767.98px) {
-  .task-main-container{
+  .task-main-container {
     width: 100%;
     /* border: solid red; */
     /* gap: 3px; */
   }
 
-  .task-main-container section{
+  .task-main-container section {
     display: none;
   }
-.task-mobi-view{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 0px 10px;
-}
-.task-mobi-nav{
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+  .task-mobi-view {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px 10px;
+  }
+  .task-mobi-nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
 
-
-
-}
-
-  .circle-title-x h1{
+  .circle-title-x h1 {
     font-size: 0.9em;
     padding: 5px;
     gap: 2px;
   }
-.todo-selected, .doing-selected,.done-selected{
-  background-color: blueviolet;
-  color: white;
-}
-.mobi-tasks-x{
-  display: flex;
- width: 100%;
-  flex-direction: column;
-  gap: 10px;
-  background-color: rgb(216, 216, 216);
-}
-
+  .todo-selected,
+  .doing-selected,
+  .done-selected {
+    background-color: blueviolet;
+    color: white;
+  }
+  .mobi-tasks-x {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(216, 216, 216);
+  }
 }
