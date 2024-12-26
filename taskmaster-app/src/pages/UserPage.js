@@ -412,7 +412,7 @@ export default function UserPage() {
               </div>
             </li>
           </ul>
-          <p>{user.email}</p>
+          <p style={{color:'black'}}>{user.email}</p>
         </div>
         <div class="search-add-btn-x">
           <div class="search-x">
