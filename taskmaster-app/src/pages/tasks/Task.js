@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import "../styles/taskstyle.css";
+import './taskstyle/taskstyle.css'
 
 import { useSelector,useDispatch } from "react-redux";
-import { setShowMobiTaskBtn } from "../store/taskSlice";
+import { setShowMobiTaskBtn } from "../../store/taskSlice";
 
 export default function Task() {
   const navigate = useNavigate();

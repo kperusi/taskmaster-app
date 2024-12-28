@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setStoreTasks } from "../store/taskSlice";
-import "../styles/singletaskstyle.css";
+import { setStoreTasks } from "../../store/taskSlice";
+import './singletaskstyle/singletaskstyle.css'
 
 export default function SingleTask() {
   // const [tasks, setTasks] = useState([]);

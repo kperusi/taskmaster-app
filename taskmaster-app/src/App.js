@@ -1,23 +1,20 @@
-import { BrowserRouter } from 'react-router';
+import { BrowserRouter } from "react-router";
 // import './App.css';
 // import HomePage from './pages/HomePage';
-import Router from './pages/Router';
-import { Provider } from'react-redux';
-import store from './store/store';
-
+import Router from "./pages/Router";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
-    <Provider store={store}>
-    <Router/>
-    </Provider>
-     
+        <Provider store={store}>
+          <Router />
+        </Provider>
       </BrowserRouter>
-    {/* <HomePage/>
-     */}
-    
+      {/* <HomePage/>
+       */}
     </div>
   );
 }

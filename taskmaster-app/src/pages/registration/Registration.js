@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../styles/styles.css";
-import img1 from "../styles/images/TaskMaster.png";
+import "../registration/registrationstyle/registrationstyle.css";
+// import img1 from "..;
 import { NavLink, useNavigate } from "react-router";
 export default function Registration() {
   const [showLogin, setShowLogin] = useState();
@@ -172,7 +172,7 @@ export default function Registration() {
             <h1>
               <span>Sign up for</span> Free
             </h1>
-            <form id="registerFormElement" className="form add-task-form">
+            <form id="registerFormElement" className="form login-task-form">
               <div className="sign-up-name-x">
                 <label htmlFor="firstname">First Name</label>
                 <input

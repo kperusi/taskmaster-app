@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "../styles/styles.css";
+// import "../styles/styles.css";
 // import '../styles/homepagestyle.css'
-import img1 from "../styles/images/TaskMaster.png";
+import './homepagestyle/homepagestyle.css'
+import img1 from "../../styles/images/TaskMaster.png";
 import { NavLink, useNavigate } from "react-router";
-import Hambuger from "./Hambuger";
-import MobileMenu from "./MobileMenu";
+import Hambuger from "../Hambuger";
+import MobileMenu from "../mobimenu/MobileMenu";
 
 export default function HomePage() {
   const [showLogin, setShowLogin] = useState();
@@ -15,12 +16,13 @@ export default function HomePage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
   const [user, setUser] = useState({});
-  const [display, setDisplay] = useState("");
+  const [mainDisplay, setMainDisplay] = useState(true);
   const [showMobiMenu, setShowMobiMenu] = useState("");
 
   const handleShowMobiMenu = () => {
     if (showMobiMenu === true) {
       setShowMobiMenu(false);
+      setMainDisplay(true);
     } else {
       setShowMobiMenu(true);
     }
@@ -29,6 +31,8 @@ export default function HomePage() {
 
   return (
     <main>
+      
+
       <section className="container" id="app">
         <div className="page">
           <div className="home-main">
@@ -44,14 +48,7 @@ export default function HomePage() {
                     handleShowMobiMenu={handleShowMobiMenu}
                   />
                 </nav>
-                
-                  {showMobiMenu && <MobileMenu />}
-            
-
-                {/* <div className='mobi-menu-x'>
-                  <MobileMenu/>
-                </div> */}
-
+                {showMobiMenu && <MobileMenu />}
                 <div className="login-btn-x mobi">
                   <button
                     className="login-btn"

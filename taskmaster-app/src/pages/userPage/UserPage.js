@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
-import "../styles/styles.css";
+import './userpagestyle/userpagestyle.css'
 import { useDispatch, useSelector } from "react-redux";
-import { setShowMobiTaskBtn, setStoreTasks } from "../store/taskSlice";
+import { setShowMobiTaskBtn, setStoreTasks } from "../../store/taskSlice";
 
 export default function UserPage() {
   const navigate = useNavigate();
@@ -126,6 +126,10 @@ export default function UserPage() {
 
       if (!response.ok) {
         dispatch(setStoreTasks(JSON.parse(localStorage.getItem("tasks"))));
+        if(data.error === 'Token is not valid'){
+          localStorage.removeItem('token');
+          navigate('/login');
+        }
         throw new Error(data.message || "Failed to fetch tasks");
       }
 
@@ -354,7 +358,7 @@ export default function UserPage() {
           </button>
         </div>
         <button
-          class={`mobi-add-task-btn ${mobiTaskBtn}`}
+          className={`mobi-add-task-btn ${mobiTaskBtn}`}
           onClick={showAddTaskFormHandler}
         >
           <svg

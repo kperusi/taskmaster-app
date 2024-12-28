@@ -1,0 +1,260 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "NunitoSans-Regular";
+  font-size: 17px;
+}
+
+.dashboard-main {
+  width: 100%;
+  padding: 0px 20px;
+  background-color: white;
+  border-radius: 10px;
+  gap: 20px;
+}
+
+.card-x {
+  display: flex;
+  gap: 5px;
+}
+
+.dashboard-top-x {
+  width: 50%;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.dashboard-logo-x {
+  display: none;
+}
+
+.card {
+  width: 60%;
+  height: 150px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.dashboard-completed-task-x {
+  background-color: rgb(155, 238, 238);
+}
+
+.dashboard-progress-task-x {
+  background-color: rgb(149, 179, 236);
+}
+
+.dashboard-overdue-task-x {
+  background-color: rgb(245, 122, 122);
+}
+
+.dashboard-total-task-x {
+  background-color: antiquewhite;
+}
+
+.name-salutation-x p {
+  color: gray;
+  font-size: 0.8em;
+}
+
+.recent-upcoming-x {
+  display: flex;
+  margin-top: 20px;
+  gap: 20px;
+  background-color: rgb(232, 231, 233);
+  border-radius: 5px;
+}
+
+.today-overdue-task-x {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  place-content: center;
+  margin-top: 20px;
+}
+
+.overdue-task-x {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 20px;
+  gap: 10px;
+  background-color: lightcoral;
+}
+
+.recent-task {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 50%;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(232, 231, 233);
+}
+
+.recent-x {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: white;
+  border: solid rgb(187, 186, 186) 1.3px;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.recent-x p {
+  text-align: left;
+}
+
+.recent-r-1 {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recent-r-1 hr {
+  height: 15px;
+}
+
+.r-duedate {
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.high {
+  background-color: rgb(243, 163, 163);
+  color: rgb(243, 5, 5);
+  border-radius: 3px;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+}
+
+.medium {
+  background-color: rgb(190, 157, 243);
+  color: rgb(71, 12, 167);
+  border-radius: 3px;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+}
+
+.low {
+  background-color: rgb(48, 194, 79);
+  color: white;
+  border-radius: 3px;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+}
+
+.subtask-render-x {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+}
+
+.subtask-render-x input {
+  width: 90%;
+}
+
+.subtask-render-x span {
+  width: 5%;
+}
+
+.upcoming-task {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 10px;
+  gap: 10px;
+  background-color: aliceblue;
+}
+
+.upcoming-task-2 {
+  width: 50%;
+  height: 100vh;
+}
+
+.dashboard-selected {
+  background-color: blueviolet !important;
+  color: white !important;
+}
+
+.task-selected {
+  background-color: blueviolet !important;
+  color: white !important;
+}
+
+.calender-selected {
+  background-color: blueviolet !important;
+  color: white !important;
+}
+
+@media (max-width: 575.98px) {
+  .dashboard-main {
+    /* border: solid; */
+    width: 100%;
+    padding: 0px;
+  }
+  .dashboard-top-x {
+    width: 100%;
+  }
+  .dashboard-name {
+    width: 100%;
+  }
+  .card-x {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    place-content: center;
+  }
+  .card-x div {
+    width: 45%;
+  }
+  .recent-upcoming-x {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 20px;
+    background-color: rgb(232, 231, 233);
+    border-radius: 5px;
+  }
+  .recent-task {
+    width: 100%;
+    font-size: 0.8em;
+  }
+  .recent-r-1 p {
+    font-size: 0.8em;
+  }
+  .upcoming-task {
+    /* display: none; */
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    /* padding-bottom: 60px; */
+  }
+  .upcoming-task-2 {
+    width: 100%;
+    height: 300px;
+    padding-bottom: 60px;
+  }
+}
+.upcoming-task-2 h3 {
+  width: 100%;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=dashboardstyle.css.map */

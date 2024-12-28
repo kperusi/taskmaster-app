@@ -1,0 +1,196 @@
+.task-main-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    font-size: 0.85em !important;
+  }
+  .task-main-container section {
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgb(228, 122, 122); */
+    padding: 10px 5px;
+    gap: 20px;
+    width: 35%;
+    border: solid 2px rgb(230, 212, 248);
+    border-radius: 5px;
+  }
+  .todo-container {
+    display: flex;
+    flex-direction: column;
+    padding: 13px;
+    background-color: white;
+    border-radius: 5px;
+  }
+  .row-1 {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+    /* border: solid; */
+  }
+  .high {
+    background-color: rgb(243, 163, 163);
+    color: rgb(243, 5, 5);
+    padding: 3px 10px;
+    border-radius: 3px;
+    width: fit-content;
+    text-align: center;
+    align-self: last baseline;
+  }
+  .medium {
+    background-color: rgb(190, 157, 243);
+    color: rgb(71, 12, 167);
+    padding: 3px;
+    border-radius: 3px;
+    width: fit-content;
+    text-align: center;
+    align-self: last baseline;
+  }
+  .low {
+    background-color: rgb(48, 194, 79);
+    color: white;
+    padding: 3px 10px;
+    border-radius: 3px;
+    width: fit-content;
+    text-align: center;
+    align-self: last baseline;
+  }
+  .tasks-content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: 17px;
+  }
+  
+  .todo-x,
+  .inprogress-x,
+  .completed-x {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(238, 238, 238);
+    padding: 10px;
+    border-radius: 5px;
+    gap: 10px;
+    /* justify-content: space-between; */
+    border: 1px solid rgb(228, 223, 223);
+    margin-bottom: 10px;
+    width: 40%;
+  }
+  
+  .done,
+  .circle {
+    /* background-color: red; */
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+  }
+  .title-x {
+    display: flex;
+    gap: 10px;
+  }
+  .circle-title-x {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+  }
+  .in-progress-circle {
+    background-color: rgb(17, 130, 182);
+  }
+  .todo-circle {
+    background-color: rgb(40, 145, 14);
+  }
+  .completed-circle {
+    background-color: rgb(243, 25, 152);
+  }
+  .task-mobi-view {
+    display: none;
+  }
+  @media (max-width: 575.98px) {
+    .task-main-container {
+      width: 100%;
+      /* border: solid red; */
+      /* gap: 3px; */
+    }
+  
+    .task-main-container section {
+      display: none;
+    }
+    .task-mobi-view {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 0px 10px;
+    }
+    .task-mobi-nav {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    .circle-title-x h1 {
+      font-size: 0.9em;
+      padding: 5px;
+      gap: 2px;
+    }
+    .todo-selected,
+    .doing-selected,
+    .done-selected {
+      background-color: blueviolet;
+      color: white;
+    }
+    .mobi-tasks-x {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+      background-color: rgb(216, 216, 216);
+    }
+  
+    /* .doing-selected{
+    background-color: white;
+  } */
+  }
+  
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .task-main-container {
+      width: 100%;
+      /* border: solid red; */
+      /* gap: 3px; */
+    }
+  
+    .task-main-container section {
+      display: none;
+    }
+    .task-mobi-view {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 0px 10px;
+    }
+    .task-mobi-nav {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    .circle-title-x h1 {
+      font-size: 0.9em;
+      padding: 5px;
+      gap: 2px;
+    }
+    .todo-selected,
+    .doing-selected,
+    .done-selected {
+      background-color: blueviolet;
+      color: white;
+    }
+    .mobi-tasks-x {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+      background-color: rgb(216, 216, 216);
+    }
+  }
+  

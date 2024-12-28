@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import "../styles/mobimenustyle.css";
-import img1 from "../styles/images/undraw_good-team_zww8.png";
-import img2 from "../styles/images/undraw_completed-tasks_1j9z.png"
+import "./mobimenustyle/mobimenustyle.css";
+import img1 from '../../styles/images/undraw_good-team_zww8.png';
+import img2 from "../../styles/images/undraw_completed-tasks_1j9z.png"
 
 export default function MobileMenu() {
   const navigate = useNavigate();
@@ -10,9 +10,7 @@ export default function MobileMenu() {
   return (
     <main className="mobi-menu-main">
       <section className="mobi-menu-content">
-        {/* <div className="img2-x">
-          <img src={img2} alt="undraw_good-team_zww8" />
-        </div> */}
+    
       <div className="mobi-hero-x">
         <h1 className="hero">Organize Your Day-to-Day,</h1>
         <h1>

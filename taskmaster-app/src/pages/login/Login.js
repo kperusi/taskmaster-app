@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../styles/styles.css";
-import img1 from "../styles/images/TaskMaster.png";
+import "../login/loginstyle/loginstyle.css";
+import img1 from "../../styles/images/TaskMaster.png";
 import { NavLink, useNavigate } from "react-router";
 
 export default function Login() {
@@ -93,7 +93,7 @@ setMsg('')
 
             <h1>Login</h1>
 
-            <form id="loginFormElement" className="add-task-form">
+            <form id="loginFormElement" className="login-task-form">
               <div className="sign-up-name-x">
                 <label htmlFor="Email">Email</label>
                 <input

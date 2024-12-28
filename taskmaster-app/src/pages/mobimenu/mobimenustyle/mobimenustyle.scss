@@ -5,15 +5,15 @@
 }
 @font-face {
   font-family: "Raleway-Medium";
-  src: url("./fonts/Raleway-Regular.ttf");
+  src: url("../../../styles/fonts/Raleway-Regular.ttf");
 }
 @font-face {
   font-family: "PlaywriteHRLijeva-VariableFont_wght";
-  src: url("./fonts/PlaywriteHRLijeva-VariableFont_wght.ttf");
+  src: url("../../../styles/fonts/PlaywriteHRLijeva-VariableFont_wght.ttf");
 }
 @font-face {
   font-family: "NunitoSans-Regular";
-  src: url("./fonts/NunitoSans-Regular.ttf");
+  src: url("../../../styles/fonts/NunitoSans-Regular.ttf");
 }
 
 body {
@@ -51,7 +51,7 @@ body {
 }
 
 .mobi-menu-content{
-  background-image: url('./images/undraw_completed-tasks_1j9z.png');
+  background-image: url('../../../styles/images/undraw_completed-tasks_1j9z.png');
   background-repeat: none;
   background-size: contain;
   display: flex;

@@ -1,14 +1,14 @@
 import React from 'react'
 import { Route,Routes } from 'react-router-dom'
-import HomePage from './HomePage'
-import DashboardPage from './DashboardPage'
-import Task from './Task'
+import HomePage from './homepage/HomePage'
+import DashboardPage from './dashboard/DashboardPage'
+import Task from './tasks/Task'
 import ErrorPage from './ErrorPage'
-import UserPage from './UserPage'
-import SingleTask from './SingleTask'
-import Registration from './Registration'
-import Login from './Login'
-import Calender from './Calender'
+import UserPage from './userPage/UserPage'
+import SingleTask from './singletask/SingleTask'
+import Registration from './registration/Registration'
+import Login from './login/Login'
+import Calender from './calender/Calender'
 
 export default function Router() {
   return (
