@@ -126,9 +126,10 @@ export default function UserPage() {
 
       if (!response.ok) {
         dispatch(setStoreTasks(JSON.parse(localStorage.getItem("tasks"))));
-        if(data.error === 'Token is not valid'){
+        console.log(data.message)
+        if(data.message === 'Token is not valid'){
           localStorage.removeItem('token');
-          navigate('/login');
+          navigate('/taskmaster/login');
         }
         throw new Error(data.message || "Failed to fetch tasks");
       }
